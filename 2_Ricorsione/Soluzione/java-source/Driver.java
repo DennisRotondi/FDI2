@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
 public class Driver {
 
     public static void main(String[] argv) {
-
         if (argv.length < 1) {
             System.out.println("Specificare: {inverti, maxGap, labirinto}");
             return;
@@ -27,7 +26,6 @@ public class Driver {
             System.out.println("* * *");
             System.out.println("lista invertita");
             System.out.println(l);
-            System.out.println();
 
         } else if (argv[0].equals("maxGap")) {
 
@@ -44,7 +42,6 @@ public class Driver {
         } else if (argv[0].equals("labirinto")) {
 
             try {
-
                 BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
                 System.out.println("Inserisci n (dimensione del labirinto): ");
 
@@ -77,7 +74,5 @@ public class Driver {
         } else {
             System.out.println("Specificare: {inverti, maxGap, labirinto}");
         }
-
     }
-
 }

@@ -19,9 +19,6 @@ public class MaxGap {
         int max_gap_left = maxGap(array, start, pivot+1);
         int max_gap_right = maxGap(array, pivot, end);
 
-
         return max_gap_right > max_gap_left ? max_gap_right : max_gap_left;
-
     }
-
 }
