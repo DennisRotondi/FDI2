@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Utils{
+public class Utils {
     private static int MIN_SIZE = 4;
     private static int MAX_SIZE = 100000000;
 
@@ -21,15 +21,15 @@ public class Utils{
     /* 
      * Stampa quali algoritmi di ordinamento possono essere dati in input al Driver
      */
-    public void printHelpSort(){
+    public void printHelpSort() {
         System.out.println("\nAlgoritmi da implementare e testare:\nmergeSort\nheapSort\nselectionSort\ninsertionSort\nquickSort\nradixSort\nbucketSort\n\n\nVedere il testo dell'esercitazione per info più specifiche\n\n");
     }
 
     /* 
      * Controlla che la input size rispetti MAX_SIZE e MIN_SIZE 
      */
-    public int checkSize(int size){
-        if(size < MIN_SIZE || size > MAX_SIZE){
+    public int checkSize(int size) {
+        if(size < MIN_SIZE || size > MAX_SIZE) {
             System.out.println("Size non valida. La size deve essere compresa tra "+MIN_SIZE+" e "+MAX_SIZE+" inclusi");
             System.exit(1);
         }
@@ -68,7 +68,7 @@ public class Utils{
      * Esegue num inversioni random nell'array
      * un'inversione è uno swap di due elementi
      */
-    public void genInversioni(int[] arr, int num_inversioni){
+    public void genInversioni(int[] arr, int num_inversioni) {
         int i = 0;
         Random r = new Random();
         while(i < num_inversioni) {
@@ -93,21 +93,21 @@ public class Utils{
         if (tipo.equals(RANDOM)) {
             for (int i = 0; i < size; i++)
                 ris[i] = r.nextInt(size);
-        } else if(tipo.equals(ORDINATO_CRESCENTE)){
+        } else if(tipo.equals(ORDINATO_CRESCENTE)) {
             for (int i = 0; i < size; i++) 
                 ris[i] = i;
-        } else if(tipo.equals(ORDINATO_DECRESCENTE)){
+        } else if(tipo.equals(ORDINATO_DECRESCENTE)) {
             for (int i = 0; i < size; i++) 
                 ris[i] = size - i;
-        } else if(tipo.equals(QUASI_CRESCENTE)){ 
+        } else if(tipo.equals(QUASI_CRESCENTE)) {
             for (int i = 0; i < size; i++) 
                 ris[i] = i;
             genInversioni(ris, num_inversioni);
-        } else if(tipo.equals(QUASI_DECRESCENTE)){
+        } else if(tipo.equals(QUASI_DECRESCENTE)) {
             for (int i = 0; i < size; i++) 
                 ris[i] = size - i;
             genInversioni(ris, num_inversioni);
-        } else{
+        } else {
             printHelp();
             System.exit(1);
         }
@@ -129,10 +129,10 @@ public class Utils{
         System.out.println("    >> Ordinamento array...\n");
         sort(alg, clone);
         Arrays.sort(clone2);
-        if(Arrays.equals(clone, clone2)){
+        if(Arrays.equals(clone, clone2)) {
             System.out.println("\nEsito test algoritmo OK\n");
         }
-        else{
+        else {
             System.out.println("Array ordinato con "+alg+": \n" + Arrays.toString(clone));
             System.out.println("Should be: \n" + Arrays.toString(clone2));
             System.out.println("\nEsito test algoritmo ERRORE (sorry)\n");
@@ -160,7 +160,7 @@ public class Utils{
      * (come run ma prende input da file)
      */
     public void file(String alg, String file_name) {
-        try{
+        try {
             System.out.println("Leggo array dal file " + file_name + "...");
             Scanner s = new Scanner(new File(file_name));
             int[] array = new int[s.nextInt()];
@@ -170,7 +170,7 @@ public class Utils{
 
             test(alg, array);
             run(alg, array);
-        } catch(FileNotFoundException ex){
+        } catch(FileNotFoundException ex) {
             System.out.println("File not found");
             System.exit(1);
         }
@@ -180,7 +180,7 @@ public class Utils{
      * Genera un possibile input (tipologia <tipo_input>, dimensione <size_input>), scrivendolo nel file <file_name>;
      */
     public void arrayToFile(String tipo, int size, String filename){
-        try{
+        try {
             int[] arr = generator(size, tipo);
             System.out.println("Scrivo array sul file " + filename + "...");
             
@@ -197,7 +197,7 @@ public class Utils{
 
             //System.out.println(Arrays.toString(arr));
             System.out.println("Finito, OK");
-        }catch(IOException e){
+        } catch(IOException e) {
             System.out.println("IOException");
             System.exit(1);
         }

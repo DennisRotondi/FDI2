@@ -91,7 +91,7 @@ public class Driver {
             Heap h = Heap.array2heap(a, Heap.HEAP_TYPE.MAX_HEAP);
             System.out.print("Heap is:\n\t");
             if (h != null)
-            	h.print();
+                h.print();
             System.out.print("Should be:\n\t 100 36 17 25 1 2 7 19 3\n");
 
         } else if (argv[0].equals("sort")) {

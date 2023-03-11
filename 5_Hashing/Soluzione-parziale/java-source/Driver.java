@@ -70,9 +70,6 @@ public class Driver {
             System.out.println("Valore associato a Giorgio: " + table.get("Giorgio"));
             System.out.print("------------------\n");
 
-            
-
-
         } else if (argv[0].equals("open")) {
 
             System.out.print("Initializing hash table with capacity 5");
@@ -126,11 +123,8 @@ public class Driver {
             System.out.println("Valore associato a Giorgio: " + table.get("Giorgio"));
             System.out.print("------------------\n");
 
-
         } else {
             print();
         }
-
     }
-
 }

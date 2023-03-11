@@ -31,14 +31,14 @@ public class Kth {
     public int get() {
         if (this.maxHeap.size() >= this.k) 
             return maxHeap.peek();
-        else{
+        else {
             System.out.println("L'Array contiene un numero inferiore a k elementi");
             return -1;
         }
     }
 
     public void remove() {
-        if (this.maxHeap.size() >= this.k){
+        if (this.maxHeap.size() >= this.k) {
             if (this.minHeap.size() == 0) {
                 this.maxHeap.poll();
             } else {

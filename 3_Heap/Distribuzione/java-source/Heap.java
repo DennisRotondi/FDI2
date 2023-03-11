@@ -2,9 +2,13 @@ public class Heap {
 
     public enum HEAP_TYPE {MAX_HEAP, MIN_HEAP};
 
-    public static class HeapEntry {}
+    static class HeapEntry {
 
-    public Heap(HEAP_TYPE type, int capacity) {}
+    }
+
+    public Heap(HEAP_TYPE type, int capacity) {
+        
+    }
 
     public HEAP_TYPE getType() {
         return HEAP_TYPE.MAX_HEAP;

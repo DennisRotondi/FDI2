@@ -12,7 +12,6 @@ public class Heap {
     }
 
     public Heap(HEAP_TYPE type, int capacity) {
-
         this.used = 0;
         this.array = new HeapEntry[capacity];
         this.type = type;
@@ -54,7 +53,6 @@ public class Heap {
     }
 
     private boolean compare(int i, int j) {
-
         if (this.type == HEAP_TYPE.MIN_HEAP)
             return this.array[i].key < this.array[j].key;
         else
@@ -62,7 +60,6 @@ public class Heap {
     }
 
     private void exchange(int i, int j) {
-
         HeapEntry temp = this.array[i];
         this.array[i] = this.array[j];
         this.array[j] = temp;
@@ -72,8 +69,7 @@ public class Heap {
     }
 
     public HeapEntry add(int key) {
-
-        if(this.used >= this.array.length)
+        if (this.used >= this.array.length)
             grow();
 
         HeapEntry e = new HeapEntry();
@@ -102,15 +98,14 @@ public class Heap {
     }
 
     private int getMaxChildIndex(int k) {
-
-        if(isLeaf(k))
+        if (isLeaf(k))
             return -1;
 
         else {
-
             int l = getLeftIndex(k);
             int r = getRightIndex(k);
             int max = l;
+            
             if(r < this.used && compare(r, l))
                 max = r;
 
@@ -119,12 +114,10 @@ public class Heap {
     }
 
     private void heapify(int i) {
-
-        if(isLeaf(i))
+        if (isLeaf(i))
             return;
 
         else {
-
             int j = getMaxChildIndex(i);
             if (j < 0)
                 return;
@@ -137,8 +130,8 @@ public class Heap {
     }
 
     public int poll() {
-
         int key = -1;
+
         if(this.used > 0) {
             HeapEntry e = this.array[0];
             this.array[0] = this.array[this.used - 1];
@@ -151,17 +144,14 @@ public class Heap {
     }
 
     public static Heap array2heap(int[] array, HEAP_TYPE type) {
-
         Heap h = new Heap(type, array.length);
 
         int k;
         for (k = 0; k < array.length; k++) {
-
             HeapEntry e = new HeapEntry();
             e.key = array[k];
             e.position = k;
             h.array[k] = e;
-
         }
 
         h.used = array.length;
@@ -174,44 +164,37 @@ public class Heap {
     }
 
     public void print() {
-
         for (int k = 0; k < this.used; k++)
             System.out.print(" " + this.array[k].key);
         System.out.println("\n");
     }
 
     public static void heapSort(int[] array) {
-
         Heap h = array2heap(array, HEAP_TYPE.MAX_HEAP);
-        for(int i = array.length - 1; i > 0; i--) {
 
+        for(int i = array.length - 1; i > 0; i--) {
             h.exchange(0, i);
             array[i] = h.array[i].key;
             h.used -= 1;
             h.heapify(0);
-
         }
 
         array[0] = h.array[0].key;
     }
 
-    private void siftUp(int i){
-
+    private void siftUp(int i) {
         while (i > 0) {
-
             int p = getParentIndex(i);
+            
             if (compare(i, p)) {
-
                 exchange(i, p);
                 i = p;
-
             } else
                 return;
         }
     }
 
     public void updateEntryKey(HeapEntry e, int key) {
-
         int oldKey = e.key;
         e.key = key;
 
@@ -232,7 +215,5 @@ public class Heap {
                 heapify(e.position);
 
         }
-
     }
-
 }
