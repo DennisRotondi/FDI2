@@ -109,7 +109,8 @@ public class BST<V> {
 
     private Node<V> remove(Node<V> n, int k) {
 
-        if (n == null) return null;
+        if (n == null) 
+            return null;
 
         else if (k < n.key)
             n.left = remove(n.left, k);
@@ -119,13 +120,11 @@ public class BST<V> {
 
         else {
 
-            if (n.right == null) {
+            if (n.right == null)
                 return n.left;
-            }
 
-            if (n.left == null) {
+            if (n.left == null)
                 return n.right;
-            }
 
             // two children case
             Node<V> to_remove = n;
@@ -188,12 +187,12 @@ public class BST<V> {
     }
 
     int predecessor(int k) {
-
+        
         Node<V> predecessor = predecessor(this.root, k);
+        
         if (predecessor == null)
             return -1;
         else
             return predecessor.key;
     }
-
 }

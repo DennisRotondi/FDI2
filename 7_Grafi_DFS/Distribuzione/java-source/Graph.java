@@ -4,13 +4,15 @@ import java.io.File;
 
 public class Graph<V> {
 
-    public Graph () {}
+    public Graph () {
+      
+    }
 
     public List<GraphNode<V>> getNodes() {
         return null;
     }
 
-    public List<GraphNode<V>> getNeighbors(GraphNode<V> n){
+    public List<GraphNode<V>> getNeighbors(GraphNode<V> n) {
         return null;
     }
 
@@ -26,37 +28,36 @@ public class Graph<V> {
         return null;
     }
 
-    public void removeEdge(GraphNode<V> v1, GraphNode<V> v2){
+    public void removeEdge(GraphNode<V> v1, GraphNode<V> v2) {
 
     }
 
-    public void removeNode(GraphNode<V> v){
+    public void removeNode(GraphNode<V> v) {
 
     }
 
-    public static <V> Graph<V> readFF(File input){
-      return null;
+    public static <V> Graph<V> readFF(File input) {
+        return null;
     }
 
     public String printAdj() {
-		return "";
+        return "";
     }
 
     @Override
-    public String toString(){
-      return null;
+    public String toString() {
+        return null;
     }
 
-    public int nConComp(){
-      return 0;
+    public int nConComp() {
+        return 0;
     }
 
-    public List<Graph<V>> getConComp(){
-      return null;
+    public List<Graph<V>> getConComp() {
+        return null;
     }
 
-	public static class GraphNode<V> implements Cloneable{
-
+    public static class GraphNode<V> implements Cloneable {
         public enum Status {UNEXPLORED, EXPLORED, EXPLORING}
 
         protected V value;
@@ -65,17 +66,14 @@ public class Graph<V> {
         // keep track status
         protected Status state;
 
-		@Override
-		public String toString() {
-			return "GraphNode [value=" + value + ", state=" + state + "]";
-		}
+        @Override
+        public String toString() {
+            return "GraphNode [value=" + value + ", state=" + state + "]";
+        }
 
-		@Override
-		protected Object clone() throws CloneNotSupportedException {
-			return super.clone();
-		}
-		
-		
+        @Override
+        protected Object clone() throws CloneNotSupportedException {
+            return super.clone();
+        }
     }
-
 }

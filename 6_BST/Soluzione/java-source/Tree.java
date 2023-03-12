@@ -9,7 +9,6 @@ public class Tree {
     }
 
     public static Tree build_1() {
-
         Tree n6 = new Tree(6);
         Tree n3 = new Tree(3);
         Tree n12 = new Tree(12);
@@ -31,7 +30,6 @@ public class Tree {
     }
 
     public static Tree build_2() {
-
         Tree n6 = new Tree(6);
         Tree n3 = new Tree(3);
         Tree n12 = new Tree(12);
@@ -53,7 +51,6 @@ public class Tree {
     }
 
     public static Tree build_3() {
-
         Tree n6 = new Tree(6);
         Tree n3 = new Tree(3);
         Tree n12 = new Tree(12);
@@ -71,7 +68,6 @@ public class Tree {
     }
 
     private int isBST(Tree v, int last_max) {
-
         if(v == null)
             return last_max;
 
@@ -83,7 +79,6 @@ public class Tree {
     }
 
     public boolean isBST() {
-
         int res = isBST(this, 0); // tutte le chiavi sono interi positivi
         if (res < 0)
             return false;
@@ -92,7 +87,6 @@ public class Tree {
     }
 
     private int isBalanced(Tree v) {
-
         if(v == null)
             return 0;
 
@@ -110,8 +104,8 @@ public class Tree {
     }
 
     public boolean isBalanced() {
-
         int res = isBalanced(this);
+        
         if (res < 0)
             return false;
 
@@ -119,7 +113,6 @@ public class Tree {
     }
 
     private int isAVL(Tree v, int last_max, Height h) {
-
         if(v == null) {
             h.height = 0;
             return last_max;
@@ -139,19 +132,18 @@ public class Tree {
             return -1;
 
         int diff = hl.height >= hr.height ? hl.height - hr.height : hr.height - hl.height;
-        if(diff <= 1) {
+        if(diff <= 1)
             h.height = (hl.height >= hr.height ? hl.height : hr.height) + 1;
-        } else {
+        else
             return -1;
-        }
 
         return max;
     }
 
     public boolean isAVL() {
-
         Height h = new Height();
         int res = isAVL(this, 0, h);
+        
         if (res < 0 || h.height < 0)
             return false;
 
@@ -161,5 +153,4 @@ public class Tree {
     private class Height {
         int height;
     }
-
 }

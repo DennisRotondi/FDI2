@@ -5,7 +5,6 @@ public class Driver {
     }
 
     public static void main(String[] argv) {
-
         if (argv.length < 1) {
             print();
             return;
@@ -32,8 +31,6 @@ public class Driver {
             graph.addEdge(e, f);
             graph.addEdge(f, c);
             graph.addEdge(g, h);
-
-
 
             System.out.println("Grafo iniziale");
             //System.out.println(graph.getNodes());
@@ -72,7 +69,7 @@ public class Driver {
             System.out.println(graph);
         }
         else if (argv[0].equals("sweep")) {
-        	Graph<String> graph = new Graph<String>();
+            Graph<String> graph = new Graph<String>();
 
             Graph.GraphNode<String> a = graph.addNode("a");
             Graph.GraphNode<String> b = graph.addNode("b");
@@ -98,7 +95,7 @@ public class Driver {
             GraphServices.sweep(graph);
         }
         else if (argv[0].equals("top_sort")) {
-        	Graph<String> graph = new Graph<String>();
+            Graph<String> graph = new Graph<String>();
 
             Graph.GraphNode<String> a = graph.addNode("a");
             Graph.GraphNode<String> b = graph.addNode("b");
@@ -135,7 +132,7 @@ public class Driver {
             GraphServices.topologicalSort(graph);
         }
         else if (argv[0].equals("strong_cc")) {
-        	Graph<String> graph = new Graph<String>();
+            Graph<String> graph = new Graph<String>();
 
             Graph.GraphNode<String> a = graph.addNode("a");
             Graph.GraphNode<String> b = graph.addNode("b");
@@ -210,13 +207,11 @@ public class Driver {
             graph3.addEdge(h3, g3);
             graph3.addEdge(h3, i3);
 
-
-            
             System.out.println("Grafo 3:");
             System.out.println(graph3);
             
             GraphServices.strongConnectedComponents(graph3);
             System.out.println("\n");
         }
-    } //main
-} // class
+    }
+}

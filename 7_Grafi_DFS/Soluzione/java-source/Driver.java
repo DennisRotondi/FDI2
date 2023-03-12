@@ -7,7 +7,6 @@ public class Driver {
     }
 
     public static void main(String[] argv) {
-
         if (argv.length < 1) {
             print();
             return;
@@ -71,15 +70,15 @@ public class Driver {
             System.out.println(graph.printAdj());
         }
         else if(argv[0].equals("input")) {
-        	File f = new File("graph.in");
-        	Graph<String> g = Graph.readFF(f);
-        	System.out.println("Rappresentazione ad archi:");
-        	System.out.println(g);
-        	System.out.println("Rappresentazione adiacenze:");
-        	System.out.println(g.printAdj());
+            File f = new File("graph.in");
+            Graph<String> g = Graph.readFF(f);
+            System.out.println("Rappresentazione ad archi:");
+            System.out.println(g);
+            System.out.println("Rappresentazione adiacenze:");
+            System.out.println(g.printAdj());
         }
         else if(argv[0].equals("count_comp")) {
-        	Graph<String> graph = new Graph<String>();
+            Graph<String> graph = new Graph<String>();
 
             Graph.GraphNode<String> a = graph.addNode("a");
             Graph.GraphNode<String> b = graph.addNode("b");
@@ -106,7 +105,7 @@ public class Driver {
             System.out.println("Il grafo ha " + graph.nConComp() + " componenti connesse.");
         }
         else if(argv[0].equals("get_comp")) {
-        	Graph<String> graph = new Graph<String>();
+            Graph<String> graph = new Graph<String>();
 
             Graph.GraphNode<String> a = graph.addNode("a");
             Graph.GraphNode<String> b = graph.addNode("b");
@@ -132,9 +131,9 @@ public class Driver {
             System.out.println(graph.printAdj());
             int k = 1;
             for(Graph<String> sub : graph.getConComp()) {
-            	System.out.println("Sottografo " + k);
-            	System.out.println(sub.printAdj());
-            	k++;
+                System.out.println("Sottografo " + k);
+                System.out.println(sub.printAdj());
+                k++;
             }
         }
     }

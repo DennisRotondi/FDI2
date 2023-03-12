@@ -9,7 +9,6 @@ public class Tree {
     }
 
     public static Tree build_1() {
-
         Tree n6 = new Tree(6);
         Tree n3 = new Tree(3);
         Tree n12 = new Tree(12);
@@ -31,7 +30,6 @@ public class Tree {
     }
 
     public static Tree build_2() {
-
         Tree n6 = new Tree(6);
         Tree n3 = new Tree(3);
         Tree n12 = new Tree(12);
@@ -53,7 +51,6 @@ public class Tree {
     }
 
     public static Tree build_3() {
-
         Tree n6 = new Tree(6);
         Tree n3 = new Tree(3);
         Tree n12 = new Tree(12);
