@@ -24,7 +24,7 @@ public class Partition<V> {
     // Costo: O(min(n_u, n_v))
     public void union(int u, int v) {
         if(A.get(u) == A.get(v))
-            return; 
+            return;
         
         int n_u = A.get(u).size(), n_v = A.get(v).size(); 
         ArrayList<Node<V>> A_u = A.get(u), A_v = A.get(v); 

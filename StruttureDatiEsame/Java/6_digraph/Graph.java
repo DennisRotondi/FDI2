@@ -9,10 +9,12 @@ public class Graph<V> {
     private int n_nodes;
     private int n_edges;
 
+    /* Costruttore */	
     public Graph () {
         this.nodes = new LinkedList<Node<V>>();
     }
 
+    /* Restituisce una collezione contenente i nodi del grafo */	
     @SuppressWarnings("unchecked")
     public List<Node<V>> getNodes() {
         List<Node<V>> ret = new LinkedList<>();
@@ -27,7 +29,8 @@ public class Graph<V> {
         
         return (List<Node<V>>) ret;
     }
-
+    
+    /* Restituisce una lista contenente i vicini uscenti del nodo dato */	
     @SuppressWarnings("unchecked")
     public List<Node<V>> getOutNeighbors(Node<V> n) {
         List<Node<V>> ret = new LinkedList<>();
@@ -43,6 +46,7 @@ public class Graph<V> {
         return (List<Node<V>>) ret;
     }
 
+    /* Restituisce una lista contenente i vicini entranti del nodo dato */	
     @SuppressWarnings("unchecked")
     public List<Node<V>> getInNeighbors(Node<V> n) {
         List<Node<V>> ret = new LinkedList<>();
@@ -58,6 +62,7 @@ public class Graph<V> {
         return (List<Node<V>>) ret;
     }
 
+    /* Aggiunge un nuovo nodo al grafo */
     public Node<V> addNode(V value) {
         Node<V> n = new Node<V>();
         n.value = value;
@@ -77,24 +82,28 @@ public class Graph<V> {
         return n;
     }
 
+    /* Aggiunge un nuovo arco diretto al grafo dal nodo nodo s al nodo t */
     public void addEdge(Node<V> s, Node<V> t) {
         s.outEdges.add(t);
         t.inEdges.add(s);
         this.n_edges++;
     }
 
+    /* Restituisce il valore associato al nodo */
     public V getNodeValue(Node<V> n) {
         return n.value;
     }
     
-    public void removeEdge(Node<V> v1, Node<V> v2) {
-        if(getOutNeighbors(v1).contains(v2)) {
+    /* Rimuove l'arco tra i nodi v1 e v2 */
+    public void removeEdge(Node<V> v1, Node<V> v2){
+        if(getOutNeighbors(v1).contains(v2)){
             v1.outEdges.remove(v2);
             v2.inEdges.remove(v1);
             this.n_edges--;
         }
     }
 
+    /* Rimuove il nodo v e tutti gli archi incidenti */
     public void removeNode(Node<V> v) {
         if(this.nodes.contains(v)) {
             LinkedList<Node<V>> out_aux = new LinkedList<Node<V>>(v.outEdges);
@@ -111,6 +120,7 @@ public class Graph<V> {
         this.n_nodes--;
     }
 
+    /* Riporta a UNEXPLORED lo stato di tutti i nodi */
     public void resetStatus() {
         List<Graph.Node<V>> nodes = this.getNodes();
         
@@ -120,44 +130,20 @@ public class Graph<V> {
         }
     }
     
+    /* Restituisce una stringa che rappresenta il grafo */
     @Override
-    public String toString() {
-        HashMap<Node<V>, Graph.Node.Status> savedStatus = new HashMap<>();
-        for(Node<V> node : this.nodes) {
-            savedStatus.put(node, node.state);
-            node.state = Graph.Node.Status.UNEXPLORED;
-        }
-        
-        StringBuffer toRet = new StringBuffer();
-        toRet.append(this.n_nodes + " " + this.n_edges + "\n");
-        for(Node<V> node : this.nodes) {
-            if(node.state == Graph.Node.Status.UNEXPLORED)
-                DFSprintEdges(node, toRet);
-        }
-        
-        for(Node<V> node : this.nodes) {
-            node.state = savedStatus.get(node);
-        }
-        return toRet.toString();
-    }
-
-    private void DFSprintEdges(Node<V> node, StringBuffer str) {
-        if(node.state != Node.Status.UNEXPLORED)
-            return;
-        
-        node.state = Node.Status.EXPLORING;
-        for(Node<V> e : node.outEdges)
-            str.append(node.value + " -> " + e.value + "\n");
-        
-        for(Node<V> e : node.outEdges) {
-            if(e.state == Node.Status.UNEXPLORED)
-                DFSprintEdges(e, str);
-        }
-        node.state = Node.Status.EXPLORED;
+    public String toString(){
+        StringBuffer str = new StringBuffer();
+            for(Node<V> node : this.nodes) {
+                for (Node<V> edge: getOutNeighbors(node))
+                    str.append("(" + node.value + ", " + edge.value + ") ");
+                str.append("\n");
+            }
+            return str.toString();
     }
 
     /* Classe interna che descrive il generico nodo del grafo, con liste dei vicini uscenti ed entranti */
-    public static class Node<V> implements Cloneable {
+    public static class Node<V> implements Cloneable{
         public enum Status {UNEXPLORED, EXPLORED, EXPLORING}
 
         protected V value;
@@ -165,7 +151,9 @@ public class Graph<V> {
         protected LinkedList<Node<V>> inEdges;
 
         protected Status state; // tiene traccia dello stato di esplorazione
+        protected int map; // utile in partition union e find
         protected int timestamp; // utile per associare valori interi ai vertici
+        protected int dist; // utile per memorizzare distanze in algoritmi per cammini minimi
 
         @Override
         public String toString() {

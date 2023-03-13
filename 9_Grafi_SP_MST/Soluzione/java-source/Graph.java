@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class Graph<V> {
-
     HashMap<Node<V>, List<Edge<V>>> graph;
 
     /* Costruttore */	
@@ -58,9 +57,10 @@ public class Graph<V> {
     /* Restituisce l'insieme di tutti gli archi del grafo */
     public Set<Edge<V>> getEdges() {
         HashSet<Edge<V>> set = new HashSet<>();
-        for(Node<V> n : this.graph.keySet()) {
+        
+        for(Node<V> n : this.graph.keySet())
             set.addAll(graph.get(n));
-        }
+        
         return set;
     }
 }

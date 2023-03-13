@@ -4,27 +4,27 @@ public class GraphServices {
 
     public static <V> void bfs(Graph<V> g) {
         for(Node<V> n : g.getNodes()) {
-            if(n.stato == Node.Stato.UNEXPLORED)
+            if(n.state == Node.Status.UNEXPLORED)
                 bfsFromNode(g, n);
         }
     }
 
     private static <V> void bfsFromNode(Graph<V> g, Node<V> source) {
-        if(!(source.stato == Node.Stato.UNEXPLORED))
+        if(!(source.state == Node.Status.UNEXPLORED))
             return;
 
         Queue<Node<V>> queue = new ArrayDeque<Node<V>>();
-        source.stato = Node.Stato.EXPLORED;
+        source.state = Node.Status.EXPLORED;
         queue.add(source);
         
         while(!queue.isEmpty()) {
             Node<V> u = queue.remove();
-            System.out.println(u.getElement());
+            System.out.println(u.getValue());
             
             for(Edge<V> e : g.getOutEdges(u)) {
                 Node<V> v = e.getTarget();
-                if(v.stato == Node.Stato.UNEXPLORED){
-                    v.stato = Node.Stato.EXPLORED;
+                if(v.state == Node.Status.UNEXPLORED){
+                    v.state = Node.Status.EXPLORED;
                     queue.add(v);
                 }
             }
@@ -78,7 +78,7 @@ public class GraphServices {
             Node<V> u = e.getSource(), v = e.getTarget();
             
             if(P.find(u.map) != P.find(v.map)) {
-                System.out.println(u.getElement() + " " + v.getElement());
+                System.out.println(u.getValue() + " " + v.getValue());
                 P.union(u.map, v.map);
             }
         }

@@ -13,14 +13,14 @@ public class Driver {
         if (argv[0].equals("graph")) {
             Graph<String> graph = new Graph<String>();
 
-            Graph.GraphNode<String> a = graph.addNode("a");
-            Graph.GraphNode<String> b = graph.addNode("b");
-            Graph.GraphNode<String> c = graph.addNode("c");
-            Graph.GraphNode<String> d = graph.addNode("d");
-            Graph.GraphNode<String> e = graph.addNode("e");
-            Graph.GraphNode<String> f = graph.addNode("f");
-            Graph.GraphNode<String> g = graph.addNode("g");
-            Graph.GraphNode<String> h = graph.addNode("h");
+            Graph.Node<String> a = graph.addNode("a");
+            Graph.Node<String> b = graph.addNode("b");
+            Graph.Node<String> c = graph.addNode("c");
+            Graph.Node<String> d = graph.addNode("d");
+            Graph.Node<String> e = graph.addNode("e");
+            Graph.Node<String> f = graph.addNode("f");
+            Graph.Node<String> g = graph.addNode("g");
+            Graph.Node<String> h = graph.addNode("h");
 
             graph.addEdge(a, b);
             graph.addEdge(a, f);
@@ -71,14 +71,14 @@ public class Driver {
         else if (argv[0].equals("sweep")) {
             Graph<String> graph = new Graph<String>();
 
-            Graph.GraphNode<String> a = graph.addNode("a");
-            Graph.GraphNode<String> b = graph.addNode("b");
-            Graph.GraphNode<String> c = graph.addNode("c");
-            Graph.GraphNode<String> d = graph.addNode("d");
-            Graph.GraphNode<String> e = graph.addNode("e");
-            Graph.GraphNode<String> f = graph.addNode("f");
-            Graph.GraphNode<String> g = graph.addNode("g");
-            Graph.GraphNode<String> h = graph.addNode("h");
+            Graph.Node<String> a = graph.addNode("a");
+            Graph.Node<String> b = graph.addNode("b");
+            Graph.Node<String> c = graph.addNode("c");
+            Graph.Node<String> d = graph.addNode("d");
+            Graph.Node<String> e = graph.addNode("e");
+            Graph.Node<String> f = graph.addNode("f");
+            Graph.Node<String> g = graph.addNode("g");
+            Graph.Node<String> h = graph.addNode("h");
 
             graph.addEdge(a, b);
             graph.addEdge(a, f);
@@ -97,14 +97,14 @@ public class Driver {
         else if (argv[0].equals("top_sort")) {
             Graph<String> graph = new Graph<String>();
 
-            Graph.GraphNode<String> a = graph.addNode("a");
-            Graph.GraphNode<String> b = graph.addNode("b");
-            Graph.GraphNode<String> c = graph.addNode("c");
-            Graph.GraphNode<String> d = graph.addNode("d");
-            Graph.GraphNode<String> e = graph.addNode("e");
-            Graph.GraphNode<String> f = graph.addNode("f");
-            Graph.GraphNode<String> g = graph.addNode("g");
-            Graph.GraphNode<String> h = graph.addNode("h");
+            Graph.Node<String> a = graph.addNode("a");
+            Graph.Node<String> b = graph.addNode("b");
+            Graph.Node<String> c = graph.addNode("c");
+            Graph.Node<String> d = graph.addNode("d");
+            Graph.Node<String> e = graph.addNode("e");
+            Graph.Node<String> f = graph.addNode("f");
+            Graph.Node<String> g = graph.addNode("g");
+            Graph.Node<String> h = graph.addNode("h");
 
             graph.addEdge(a, b);
             graph.addEdge(a, f);
@@ -134,14 +134,14 @@ public class Driver {
         else if (argv[0].equals("strong_cc")) {
             Graph<String> graph = new Graph<String>();
 
-            Graph.GraphNode<String> a = graph.addNode("a");
-            Graph.GraphNode<String> b = graph.addNode("b");
-            Graph.GraphNode<String> c = graph.addNode("c");
-            Graph.GraphNode<String> d = graph.addNode("d");
-            Graph.GraphNode<String> e = graph.addNode("e");
-            Graph.GraphNode<String> f = graph.addNode("f");
-            Graph.GraphNode<String> g = graph.addNode("g");
-            Graph.GraphNode<String> h = graph.addNode("h");
+            Graph.Node<String> a = graph.addNode("a");
+            Graph.Node<String> b = graph.addNode("b");
+            Graph.Node<String> c = graph.addNode("c");
+            Graph.Node<String> d = graph.addNode("d");
+            Graph.Node<String> e = graph.addNode("e");
+            Graph.Node<String> f = graph.addNode("f");
+            Graph.Node<String> g = graph.addNode("g");
+            Graph.Node<String> h = graph.addNode("h");
 
             graph.addEdge(a, b);
             graph.addEdge(a, f);
@@ -161,11 +161,11 @@ public class Driver {
 
             Graph<String> graph2 = new Graph<String>();
 
-            Graph.GraphNode<String> a2 = graph2.addNode("a");
-            Graph.GraphNode<String> b2 = graph2.addNode("b");
-            Graph.GraphNode<String> c2 = graph2.addNode("c");
-            Graph.GraphNode<String> d2 = graph2.addNode("d");
-            Graph.GraphNode<String> e2 = graph2.addNode("e");
+            Graph.Node<String> a2 = graph2.addNode("a");
+            Graph.Node<String> b2 = graph2.addNode("b");
+            Graph.Node<String> c2 = graph2.addNode("c");
+            Graph.Node<String> d2 = graph2.addNode("d");
+            Graph.Node<String> e2 = graph2.addNode("e");
 
             graph2.addEdge(a2, b2);
             graph2.addEdge(b2, c2);
@@ -181,15 +181,15 @@ public class Driver {
 
             Graph<String> graph3 = new Graph<String>();
 
-            Graph.GraphNode<String> a3 = graph3.addNode("0");
-            Graph.GraphNode<String> b3 = graph3.addNode("1");
-            Graph.GraphNode<String> c3 = graph3.addNode("2");
-            Graph.GraphNode<String> d3 = graph3.addNode("3");
-            Graph.GraphNode<String> e3 = graph3.addNode("4");
-            Graph.GraphNode<String> f3 = graph3.addNode("5");
-            Graph.GraphNode<String> g3 = graph3.addNode("6");
-            Graph.GraphNode<String> h3 = graph3.addNode("7");
-            Graph.GraphNode<String> i3 = graph3.addNode("8");
+            Graph.Node<String> a3 = graph3.addNode("0");
+            Graph.Node<String> b3 = graph3.addNode("1");
+            Graph.Node<String> c3 = graph3.addNode("2");
+            Graph.Node<String> d3 = graph3.addNode("3");
+            Graph.Node<String> e3 = graph3.addNode("4");
+            Graph.Node<String> f3 = graph3.addNode("5");
+            Graph.Node<String> g3 = graph3.addNode("6");
+            Graph.Node<String> h3 = graph3.addNode("7");
+            Graph.Node<String> i3 = graph3.addNode("8");
 
             // 0-1-2-3
             graph3.addEdge(a3, b3);

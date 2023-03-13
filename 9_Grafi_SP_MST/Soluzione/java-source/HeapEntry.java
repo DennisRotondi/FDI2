@@ -1,20 +1,12 @@
-/**
- * Entry a chiave intera e valore generico
- */
+/* Entry a chiave intera e valore generico */
 public class HeapEntry<V> {
-    /**
-     * indice in cui e' memorizzato il valore
-     */
+    /* indice in cui e' memorizzato il valore */
     private int index;
 
-    /**
-     * chiave (su cui si fa l'ordinamento)
-     */
+    /* chiave (su cui si fa l'ordinamento) */
     private int key;
 
-    /**
-     * valore
-     */
+    /* valore */
     private V value;
 
     public HeapEntry(int index, int key, V value) {
