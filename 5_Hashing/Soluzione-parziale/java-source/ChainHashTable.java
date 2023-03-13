@@ -25,6 +25,7 @@ public class ChainHashTable extends AbstractHashTable {
     /* Metodi non implementati in AbstractHashTable */
 
     // Inizializza una tabella hash vuota secondo i parametri passati al costruttore
+    @SuppressWarnings("unchecked")
     protected void createTable() {
         table = (LinkedList<Entry>[]) new LinkedList[getCapacity()];
         return;
