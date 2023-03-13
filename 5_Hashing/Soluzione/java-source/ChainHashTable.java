@@ -53,7 +53,7 @@ public class ChainHashTable extends AbstractHashTable {
         int old = -1;
         int c = getCapacity();
         if (size() + 1 > c*getMaxLambda())
-            resize(2*c - 1);
+            resize(Prime.nextPrime(2*c));
         
         int i = hashFunction(k);
         if (table[i] == null) {
