@@ -36,7 +36,7 @@ void linked_list_add(linked_list * ll, int pos, void * value){
 	if (pos == ll->size)
 		linked_list_enqueue(ll, value);
 	else {
-		linked_list_node *to_put = malloc(sizeof(linked_list_node));
+		linked_list_node *to_put = (linked_list_node *)malloc(sizeof(linked_list_node));
 		to_put->value = value;
 		if (pos == 0) {
 			to_put->next = ll->head;
@@ -163,7 +163,7 @@ void linked_list_delete(linked_list *l) {
 linked_list_iterator * linked_list_iterator_new(linked_list *ll) {
 	if (ll->size == 0)
 		return NULL;
-	linked_list_iterator * to_ret = malloc(sizeof(linked_list_iterator));
+	linked_list_iterator * to_ret = (linked_list_iterator *)malloc(sizeof(linked_list_iterator));
 	to_ret->ll = ll;
 	to_ret->just_removed = 0;
 	to_ret->current = ll->head;
