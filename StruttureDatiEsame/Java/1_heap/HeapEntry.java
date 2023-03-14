@@ -9,12 +9,14 @@ public class HeapEntry<V> {
     /* valore */
     private V value;
 
+    /* Costruttore */
     public HeapEntry(int index, int key, V value) {
         this.index = index;
         this.key = key;
         this.value = value;
     }
 
+    /* GET methods */
     public int getIndex() {
         return index;
     }
@@ -27,6 +29,7 @@ public class HeapEntry<V> {
         return value;
     }
 
+    /* SET methods */
     public void setIndex(int index) {
         this.index = index;
     }

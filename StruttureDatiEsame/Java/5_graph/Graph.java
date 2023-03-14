@@ -14,10 +14,12 @@ public class Graph<V> {
     private int n_nodes;
     private int n_edges;
 
+    /* Costruttore */
     public Graph () {
         this.nodes = new LinkedList<Node<V>>();
     }
 
+    /* Restituisce una collezione contenente i nodi del grafo */
     @SuppressWarnings("unchecked")
     public List<Node<V>> getNodes() {
         List<Node<V>> ret = new LinkedList<>();
@@ -33,6 +35,7 @@ public class Graph<V> {
         return (List<Node<V>>) ret;
     }
 
+    /* Restituisce una lista contenente i vicini del nodo dato */
     @SuppressWarnings("unchecked")
     public List<Node<V>> getNeighbors(Node<V> n) {
         List<Node<V>> ret = new LinkedList<>();
@@ -48,6 +51,7 @@ public class Graph<V> {
         return (List<Node<V>>) ret;
     }
 
+    /* Aggiunge un nuovo nodo al grafo */
     public Node<V> addNode(V value) {
         Node<V> n = new Node<V>();
         n.value = value;
@@ -64,16 +68,19 @@ public class Graph<V> {
         return n;
     }
 
+    /* Aggiunge un nuovo arco al grafo */
     public void addEdge(Node<V> s, Node<V> t) {
         s.outEdges.add(t);
         t.outEdges.add(s);
         this.n_edges++;
     }
 
+    /* Restituisce il valore associato al nodo */
     public V getNodeValue(Node<V> n) {
         return n.value;
     }
     
+    /* Rimuove l'arco tra i nodi v1 e v2 */
     public void removeEdge(Node<V> v1, Node<V> v2) {
         removeEdgeAux(v1, v2);
         removeEdgeAux(v2, v1);
@@ -97,6 +104,7 @@ public class Graph<V> {
         }
     }
 
+    /* Rimuove il nodo v e tutti gli archi incidenti */
     public void removeNode(Node<V> v) {
         if(this.nodes.contains(v)) {
             for(Node<V> e : v.outEdges) {
@@ -107,6 +115,7 @@ public class Graph<V> {
         this.nodes.remove(v);
     }
 
+    /* Legge un grafo da file */
     public static <V> Graph<V> readFF(File input) {
         Graph<V> toRet = new Graph<>();
         
@@ -144,6 +153,7 @@ public class Graph<V> {
         return toRet;
     }
 
+    /* Restituisce una stringa che rappresenta per ogni nodo i suoi archi */
     public String printAdj() {
         StringBuffer toRet = new StringBuffer();
         
@@ -159,6 +169,7 @@ public class Graph<V> {
         return toRet.toString();
     }
     
+    /* Restituisce una stringa che rappresenta il grafo */
     @Override
     public String toString() {
         StringBuffer toRet = new StringBuffer();
@@ -172,6 +183,7 @@ public class Graph<V> {
         return toRet.toString();
     }
 
+    /* Funzione ausiliaria per toString che sfrutta DFS */
     private void DFSprintEdges(Node<V> node, StringBuffer str) {
         if(node.state != Node.Status.UNEXPLORED)
             return;
@@ -189,6 +201,7 @@ public class Graph<V> {
         node.state = Node.Status.EXPLORED;
     }
 
+    /* Restituisce il numero di componenti connesse */
     public int nConComp() {
         int ret = 0;
         
@@ -202,6 +215,7 @@ public class Graph<V> {
         return ret;
     }
 
+    /* Funzione ausiliaria per nConComp che sfrutta DFS */
     private void DFS(Node<V> node) {
         if(node.state != Node.Status.UNEXPLORED)
             return;
@@ -215,6 +229,7 @@ public class Graph<V> {
         node.state = Node.Status.EXPLORED;
     }
 
+    /* Restituisce una lista i cui elementi sono le varie componenti connesse */
     public List<Graph<V>> getConComp() {
         LinkedList<Graph<V>> toRet = new LinkedList<>();
         
@@ -229,6 +244,7 @@ public class Graph<V> {
         return toRet;
     }
 
+    /* Funzione ausiliaria per getConComp che sfrutta DFS per modificare la lista in input */
     private void DFSfillCC(Node<V> node, LinkedList<Node<V>> list) {
         if(node.state != Node.Status.UNEXPLORED)
             return;

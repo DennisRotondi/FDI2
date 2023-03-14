@@ -9,12 +9,12 @@ public class Graph<V> {
     private int n_nodes;
     private int n_edges;
 
-    /* Costruttore */	
+    /* Costruttore */
     public Graph () {
         this.nodes = new LinkedList<Node<V>>();
     }
 
-    /* Restituisce una collezione contenente i nodi del grafo */	
+    /* Restituisce una collezione contenente i nodi del grafo */
     @SuppressWarnings("unchecked")
     public List<Node<V>> getNodes() {
         List<Node<V>> ret = new LinkedList<>();
@@ -30,7 +30,7 @@ public class Graph<V> {
         return (List<Node<V>>) ret;
     }
     
-    /* Restituisce una lista contenente i vicini uscenti del nodo dato */	
+    /* Restituisce una lista contenente i vicini uscenti del nodo dato */
     @SuppressWarnings("unchecked")
     public List<Node<V>> getOutNeighbors(Node<V> n) {
         List<Node<V>> ret = new LinkedList<>();
@@ -46,7 +46,7 @@ public class Graph<V> {
         return (List<Node<V>>) ret;
     }
 
-    /* Restituisce una lista contenente i vicini entranti del nodo dato */	
+    /* Restituisce una lista contenente i vicini entranti del nodo dato */
     @SuppressWarnings("unchecked")
     public List<Node<V>> getInNeighbors(Node<V> n) {
         List<Node<V>> ret = new LinkedList<>();
@@ -95,7 +95,7 @@ public class Graph<V> {
     }
     
     /* Rimuove l'arco tra i nodi v1 e v2 */
-    public void removeEdge(Node<V> v1, Node<V> v2){
+    public void removeEdge(Node<V> v1, Node<V> v2) {
         if(getOutNeighbors(v1).contains(v2)){
             v1.outEdges.remove(v2);
             v2.inEdges.remove(v1);

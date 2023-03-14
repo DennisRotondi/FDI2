@@ -2,6 +2,7 @@ public class BST<V> {
 
     private Node<V> root;
 
+    /* Classe interna che descrive il generico nodo del BST */
     private class Node<V> {
         private int key;
         private V value;
@@ -14,12 +15,13 @@ public class BST<V> {
         }
     }
 
+    /* Costruttore */
     public BST(int key, V value) {
         this.root = new Node<V>(key, value);
     }
 
+    /* Metodo ausiliario per insert */
     private void insert(Node<V> t, int k, V v) {
-
         if (t.key == k) {
 
             t.value = v;
@@ -41,8 +43,8 @@ public class BST<V> {
         }
     }
 
+    /* Inserisce la coppia (k, v) nel BST */
     public void insert(int k, V v) {
-
         if (this.root == null)
             this.root = new Node<V>(k, v);
 
@@ -50,8 +52,8 @@ public class BST<V> {
             insert(this.root, k, v);
     }
 
+    /* Metodo ausiliario per find */
     private V find(Node<V> t, int k) {
-
         if (t == null)
             return null;
 
@@ -65,6 +67,7 @@ public class BST<V> {
             return find(t.right, k);
     }
 
+    /* Restituisce l’unico valore associato ad una chiave */
     public V find(int k) {
         if (this.root == null)
             return null;
@@ -72,24 +75,24 @@ public class BST<V> {
             return find(this.root, k);
     }
 
+    /* Metodo ausiliario per findMin */
     private Node<V> findMin(Node<V> t) {
-
         if (t.left == null)
             return t;
 
         return findMin(t.left);
     }
 
+    /* Restituisce la chiave minima contenuta nel BST */
     public int findMin() {
-
         if (this.root == null)
             return -1;
 
         return findMin(this.root).key;
     }
 
+    /* Metodo ausiliario per removeMin */
     private Node<V> removeMin(Node<V> t) {
-
         // we are on the min key
         if (t.left == null) {
             return t.right;
@@ -99,16 +102,16 @@ public class BST<V> {
         return t;
     }
 
+    /* Elimina il nodo con la chiave minima contenuta nel BST */
     public void removeMin() {
-
         if (this.root == null)
             return;
 
         this.root = removeMin(this.root);
     }
 
+    /* Metodo ausiliario per remove */
     private Node<V> remove(Node<V> n, int k) {
-
         if (n == null) 
             return null;
 
@@ -119,14 +122,12 @@ public class BST<V> {
             n.right = remove(n.right, k);
 
         else {
-
             if (n.right == null)
                 return n.left;
 
             if (n.left == null)
                 return n.right;
 
-            // two children case
             Node<V> to_remove = n;
 
             n = findMin(to_remove.right);
@@ -139,16 +140,16 @@ public class BST<V> {
         return n;
     }
 
+    /* Elimina dal BST il nodo con chiave k (se esiste) */
     public void remove(int k) {
-
         if (this.root == null)
             return;
 
         this.root = remove(this.root, k);
     }
 
+    /* Metodo ausiliario per print */
     private void print(Node<V> t, int level) {
-
         if (t == null)
             return;
 
@@ -166,13 +167,13 @@ public class BST<V> {
         print(t.right, level + 1);
     }
 
-    void print(){
+    /* Stampa una rappresentazione dell’albero */
+    void print() {
         print(this.root, 0);
     }
 
-
+    /* Metodo ausiliario per predecessor */
     private Node<V> predecessor(Node<V> n, int k) {
-
         if (n == null)
             return null;
 
@@ -186,8 +187,8 @@ public class BST<V> {
         return t;
     }
 
+    /* Restituisce il nodo del BST avente la chiave maggiore tra quelle minori di k */
     int predecessor(int k) {
-        
         Node<V> predecessor = predecessor(this.root, k);
         
         if (predecessor == null)

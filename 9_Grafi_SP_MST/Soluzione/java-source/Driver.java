@@ -12,13 +12,13 @@ public class Driver {
         Node<String> e = new Node<String>(new String("e"));
         Node<String> f = new Node<String>(new String("f"));
         
-        gra.insertNode(a); 		
-        gra.insertNode(b); 		
-        gra.insertNode(c); 		
-        gra.insertNode(d); 		
-        gra.insertNode(e); 		
-        gra.insertNode(f); 		
-    
+        gra.insertNode(a);
+        gra.insertNode(b);
+        gra.insertNode(c);
+        gra.insertNode(d);
+        gra.insertNode(e);
+        gra.insertNode(f);
+        
         gra.insertEdge(a, b, 2);
         gra.insertEdge(a, c, 1);
         gra.insertEdge(a, d, 5);
