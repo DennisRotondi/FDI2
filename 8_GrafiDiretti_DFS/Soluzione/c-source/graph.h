@@ -37,7 +37,12 @@ linked_list * graph_get_nodes(graph * g);
 /**
 Returns a list containing all the outgoing edges from n in g.
 */
-linked_list * graph_get_neighbors(graph * g, graph_node * n);
+linked_list * graph_get_out_neighbors(graph_node * n);
+
+/**
+Returns a list containing all the ingoing edges from n in g.
+*/
+linked_list * graph_get_in_neighbors(graph_node * n);
 
 /**
 Adds and returns a new node with the value given in input to the graph g.

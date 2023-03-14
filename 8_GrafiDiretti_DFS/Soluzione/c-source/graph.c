@@ -17,22 +17,12 @@ linked_list * graph_get_nodes(graph * g) {
 	return NULL;
 }
 
-linked_list * graph_get_neighbors(graph * g, graph_node * n) {
-	if (g && n) {
-		linked_list_iterator *it = linked_list_iterator_new(g->nodes);
-		graph_node* cur = (graph_node*)linked_list_iterator_getvalue(it);
-		while (linked_list_iterator_hasnext(it)) {
-			if (cur == n){
-				linked_list_iterator_delete(it);
-				return n->out_edges;
-			}
-			cur = (graph_node*)linked_list_iterator_next(it);
-		}
-		linked_list_iterator_delete(it);
-		return NULL;
-	}
-	else
-		return NULL;
+linked_list * graph_get_out_neighbors(graph_node * n) {
+    return n->out_edges;
+}
+
+linked_list * graph_get_in_neighbors(graph_node * n) {
+    return n->in_edges;
 }
 
 graph_node * graph_add_node(graph * g, void * value) {

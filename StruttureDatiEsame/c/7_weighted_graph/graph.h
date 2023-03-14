@@ -8,7 +8,6 @@ typedef enum { UNEXPLORED, EXPLORED, EXPLORING } STATUS;
 typedef struct graph_node {
 	void *value;
 	linked_list *out_edges;
-
 	int dist; // Indica la distanza dal nodo di partenza in sssp
 	int map; // Indica il mapping nodo->int per la partition
 	STATUS status;

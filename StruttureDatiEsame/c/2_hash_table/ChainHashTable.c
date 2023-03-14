@@ -1,6 +1,6 @@
-#include<string.h>
-#include<stdio.h>
-#include<stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #define prime 109345121
 double maxLambda = 0.5;
@@ -25,7 +25,7 @@ struct node** chain;
 
 struct node** createTable(int cap)
 {
-    struct node** _chain = malloc(cap * sizeof(struct node *));
+    struct node** _chain = (struct node**)malloc(cap * sizeof(struct node *));
     int i;
     for(i = 0; i < cap; i++)
         _chain[i] = NULL;
@@ -55,7 +55,7 @@ int hashFunction(char* k)
 struct Entry** entrySet(struct node** _chain)
 {
  struct Entry **result; //questo sarà un array di Entry
- result = malloc(size * sizeof(struct Entry *)); 
+ result = (struct Entry **)malloc(size * sizeof(struct Entry *)); 
  int index = 0;
  for (int i=0;i<capacity;i++) //scorro tutta la hash table
  {

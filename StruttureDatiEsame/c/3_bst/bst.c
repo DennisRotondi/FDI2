@@ -15,7 +15,7 @@ struct bst {
 
 static _bst_node * bst_node_new(int k, void * v) {
 
-	_bst_node * b = malloc(sizeof(_bst_node));
+	_bst_node * b = (_bst_node*)malloc(sizeof(_bst_node));
 	b->key = k;
 	b->value = v;
 	b->left = NULL;
@@ -26,7 +26,7 @@ static _bst_node * bst_node_new(int k, void * v) {
 
 bst * bst_new(int k, void * v) {
 
-	bst * b = malloc(sizeof(bst));
+	bst * b = (bst*)malloc(sizeof(bst));
 	b->root = bst_node_new(k, v);
 
 	return b;
@@ -222,13 +222,13 @@ void bst_print(bst * b){
 
 
 static _bst_node * bst_predecessor_aux(_bst_node * n, int k) {
-
+    
     if (n == NULL) 
     	return NULL;
-
+    
     else if (k <= n->key)
         return bst_predecessor_aux(n->left, k);
-
+    
     _bst_node * t = bst_predecessor_aux(n->right, k);
     if (t == NULL)
         return n;

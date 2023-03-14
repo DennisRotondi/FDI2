@@ -50,7 +50,7 @@ graph_node * graph_add_node(graph * g, void * value) {
 	for (; it;) {
 		linked_list_iterator *itera = linked_list_iterator_next(it);
 		if (*((char*)graph_get_node_value(((graph_node*)linked_list_iterator_getvalue(it)))) == *((char*)value)) {
-			return linked_list_iterator_getvalue(it);
+			return (graph_node*)linked_list_iterator_getvalue(it);
 		}
 		it = itera;
 	}
@@ -76,7 +76,7 @@ void * graph_get_node_value(graph_node * n) {
 static void graph_remove_edge_aux(graph* g, graph_node* v1, graph_node* v2) {
 	linked_list_iterator* it = linked_list_iterator_new(g->nodes);
 	while (it != NULL) {
-		graph_node* n = linked_list_iterator_getvalue(it);
+		graph_node* n = (graph_node*)linked_list_iterator_getvalue(it);
 		if (graph_get_node_value(n) == graph_get_node_value(v1)) {
 			linked_list_node *it2_head = (n->out_edges->head);
 			linked_list_node *it2_tail = (n->out_edges->tail);
@@ -110,7 +110,7 @@ static void graph_remove_edge_aux(graph* g, graph_node* v1, graph_node* v2) {
 				it2_head = it2_head->next;
 			}
 		}
-		it = linked_list_iterator_next(it);
+		it = (linked_list_iterator*)linked_list_iterator_next(it);
 	}
 }
 
@@ -186,7 +186,7 @@ void graph_delete(graph * g) {
 		return;
 	linked_list_iterator * i = linked_list_iterator_new(g->nodes);
 	while (i != NULL) {
-		graph_node * n = linked_list_iterator_getvalue(i);
+		graph_node * n = (graph_node*)linked_list_iterator_getvalue(i);
 		free(n->value);
 		linked_list_delete(n->out_edges);
 		i = linked_list_iterator_next(i);
@@ -302,7 +302,7 @@ static void DFS_print_edges(graph_node* node) {
 	linked_list_iterator* it = linked_list_iterator_new(node->out_edges);
 	while (it) {
 		linked_list_iterator* itera = linked_list_iterator_next(it);
-		graph_node* cur_edg = linked_list_iterator_getvalue(it);
+		graph_node* cur_edg = (graph_node*)linked_list_iterator_getvalue(it);
 		if (cur_edg->state == UNEXPLORED)
 			printf("%s %s\n", (char*)(node->value), (char*)(cur_edg->value));
 		it = itera;
@@ -310,7 +310,7 @@ static void DFS_print_edges(graph_node* node) {
 	it = linked_list_iterator_new(node->out_edges);
 	while (it) {
 		linked_list_iterator* itera = linked_list_iterator_next(it);
-		graph_node* cur_edg = linked_list_iterator_getvalue(it);
+		graph_node* cur_edg = (graph_node*)linked_list_iterator_getvalue(it);
 		if (cur_edg->state == UNEXPLORED)
 			DFS_print_edges(cur_edg);
 		it = itera;

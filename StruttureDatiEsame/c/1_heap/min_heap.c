@@ -8,8 +8,8 @@ typedef struct _min_heap_struct {
 } min_heap_struct;
 
 min_heap * min_heap_new() {
-    min_heap_struct * ret = malloc(sizeof(min_heap_struct));
-    ret->array = calloc(MIN_HEAP_MAX_SIZE, sizeof(min_heap_struct_entry *));
+    min_heap_struct * ret = (min_heap_struct*)malloc(sizeof(min_heap_struct));
+    ret->array = (min_heap_struct_entry **)calloc(MIN_HEAP_MAX_SIZE, sizeof(min_heap_struct_entry *));
     memset(ret->array, 0, MIN_HEAP_MAX_SIZE * sizeof(min_heap_struct_entry *));
     ret->size = 0;
 	return (min_heap*)ret;

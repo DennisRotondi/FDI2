@@ -53,7 +53,7 @@ void graph_add_edge(graph * g, graph_node * from, graph_node * to) {
 				linked_list_iterator_delete(it);
 				return;
 			}
-			current = linked_list_iterator_next(it);
+			current = (graph_node*)linked_list_iterator_next(it);
 		}
 		linked_list_iterator_delete(it);
 	}
@@ -76,17 +76,17 @@ void graph_remove_edge(graph * g, graph_node * v1, graph_node * v2) {
 		while (linked_list_iterator_hasnext(it)) {
 			if (current == v1) {
 				linked_list_iterator *it2 = linked_list_iterator_new(v1->out_edges);
-				graph_node* search = linked_list_iterator_getvalue(it2);
+				graph_node* search = (graph_node*)linked_list_iterator_getvalue(it2);
 				while (linked_list_iterator_hasnext(it2)) {
 					if (search == v2) {
 						linked_list_iterator *it3 = linked_list_iterator_new(v2->in_edges);
-						graph_node* nd = linked_list_iterator_getvalue(it3);
+						graph_node* nd = (graph_node*)linked_list_iterator_getvalue(it3);
 						while (linked_list_iterator_hasnext(it3)) {
 							if (nd == v1) {
 								linked_list_iterator_remove(it3);
 								linked_list_iterator_delete(it3);
 							}
-							nd = linked_list_iterator_next(it3);
+							nd = (graph_node*)linked_list_iterator_next(it3);
 						}
 				
 						linked_list_iterator_remove(it2);
@@ -95,11 +95,11 @@ void graph_remove_edge(graph * g, graph_node * v1, graph_node * v2) {
 						g->properties->n_edges--;
 						return;
 					}
-					search = linked_list_iterator_next(it2);
+					search = (graph_node*)linked_list_iterator_next(it2);
 				}
 				linked_list_iterator_delete(it2);
 			}
-			current = linked_list_iterator_next(it);
+			current = (graph_node*)linked_list_iterator_next(it);
 		}
 		linked_list_iterator_delete(it);
 	}
@@ -111,7 +111,7 @@ void graph_remove_node(graph * g, graph_node * v) {
 	if (g && v) {
 		linked_list_iterator *it = linked_list_iterator_new(g->nodes);
 		graph_node *cur = (graph_node*)linked_list_iterator_getvalue(it);
-		for (; linked_list_iterator_hasnext(it); cur = linked_list_iterator_next(it)) {
+		for (; linked_list_iterator_hasnext(it); cur = (graph_node*)linked_list_iterator_next(it)) {
 			//case I found v in g->nodes
 			if (cur == v) {
 				linked_list_iterator *it2 = linked_list_iterator_new(cur->out_edges);
@@ -132,7 +132,7 @@ void graph_remove_node(graph * g, graph_node * v) {
 			else {
 				linked_list_iterator *it2 = linked_list_iterator_new(cur->out_edges);
 				graph_node *to = (graph_node*)linked_list_iterator_getvalue(it2);
-				for (; linked_list_iterator_hasnext(it2); to = linked_list_iterator_next(it2)) {
+				for (; linked_list_iterator_hasnext(it2); to = (graph_node*)linked_list_iterator_next(it2)) {
 					if(to == v)
 						linked_list_iterator_remove(it2);
 				}
@@ -140,7 +140,7 @@ void graph_remove_node(graph * g, graph_node * v) {
 
 				linked_list_iterator *it3 = linked_list_iterator_new(cur->in_edges);
 				graph_node *nd = (graph_node*)linked_list_iterator_getvalue(it3);
-				for (; linked_list_iterator_hasnext(it3); to = linked_list_iterator_next(it3)) {
+				for (; linked_list_iterator_hasnext(it3); to = (graph_node*)linked_list_iterator_next(it3)) {
 					if(nd == v)
 						linked_list_iterator_remove(it3);
 				}
@@ -165,16 +165,16 @@ void graph_print(graph * g) {
 		while (linked_list_iterator_hasnext(it)) {
 			printf("%s: ", (char*)(cur->value));
 			linked_list_iterator *it2 = linked_list_iterator_new(cur->out_edges);
-			graph_node* to = linked_list_iterator_getvalue(it2);
+			graph_node* to = (graph_node*)linked_list_iterator_getvalue(it2);
 			//printf("Out-edges of %p\n", cur);
 			//linked_list_print(cur->out_edges);
 			while (linked_list_iterator_hasnext(it2)) {
 				printf("%s ", (char*)(to->value));
-				to = linked_list_iterator_next(it2);
+				to = (graph_node*)linked_list_iterator_next(it2);
 			}
 			printf("\n");
 			linked_list_iterator_delete(it2);
-			cur = linked_list_iterator_next(it);
+			cur = (graph_node*)linked_list_iterator_next(it);
 		}
 		linked_list_iterator_delete(it);
 	}
@@ -186,7 +186,7 @@ void graph_delete(graph * g) {
 	if (g) {
 		linked_list_iterator *it = linked_list_iterator_new(g->nodes);
 		graph_node *cur = (graph_node*)linked_list_iterator_getvalue(it);
-		for (; linked_list_iterator_hasnext(it); cur = linked_list_iterator_next(it)) {
+		for (; linked_list_iterator_hasnext(it); cur = (graph_node*)linked_list_iterator_next(it)) {
 			linked_list_iterator *it2 = linked_list_iterator_new(cur->out_edges);
 			for (; linked_list_iterator_hasnext(it2); linked_list_iterator_next(it2)) {
 				linked_list_iterator_remove(it2);
@@ -196,7 +196,7 @@ void graph_delete(graph * g) {
 		linked_list_iterator_delete(it);
 		it = linked_list_iterator_new(g->nodes);
 		cur = (graph_node*)linked_list_iterator_getvalue(it);
-		for (; linked_list_iterator_hasnext(it); cur = linked_list_iterator_next(it)) {
+		for (; linked_list_iterator_hasnext(it); cur = (graph_node*)linked_list_iterator_next(it)) {
 			free(cur->out_edges);
 			free(cur->in_edges);
 			free(cur);
