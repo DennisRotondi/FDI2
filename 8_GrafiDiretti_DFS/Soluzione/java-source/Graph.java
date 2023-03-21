@@ -167,7 +167,7 @@ public class Graph<V> {
         node.state = Node.Status.EXPLORED;
     }
 
-    /* Classe interna che descrive il generico nodo del grafo, con liste dei vicini uscenti ed entranti */
+    /* Classe interna che descrive il generico nodo del grafo */
     public static class Node<V> implements Cloneable {
         public enum Status {UNEXPLORED, EXPLORED, EXPLORING}
 

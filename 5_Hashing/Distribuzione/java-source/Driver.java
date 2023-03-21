@@ -69,7 +69,7 @@ public class Driver {
 
         } else if (argv[0].equals("open")) {
 
-            System.out.print("Initializing hash table with capacity 5");
+            System.out.println("Initializing hash table with capacity 5");
             OpenHashTable table = new OpenHashTable();
             System.out.print("------------------\n");
             System.out.println("Test inserimento 2 coppie\n");

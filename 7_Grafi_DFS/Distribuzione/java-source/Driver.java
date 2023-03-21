@@ -15,14 +15,14 @@ public class Driver {
         if (argv[0].equals("graph")) {
             Graph<String> graph = new Graph<String>();
 
-            Graph.GraphNode<String> a = graph.addNode("a");
-            Graph.GraphNode<String> b = graph.addNode("b");
-            Graph.GraphNode<String> c = graph.addNode("c");
-            Graph.GraphNode<String> d = graph.addNode("d");
-            Graph.GraphNode<String> e = graph.addNode("e");
-            Graph.GraphNode<String> f = graph.addNode("f");
-            Graph.GraphNode<String> g = graph.addNode("g");
-            Graph.GraphNode<String> h = graph.addNode("h");
+            Graph.Node<String> a = graph.addNode("a");
+            Graph.Node<String> b = graph.addNode("b");
+            Graph.Node<String> c = graph.addNode("c");
+            Graph.Node<String> d = graph.addNode("d");
+            Graph.Node<String> e = graph.addNode("e");
+            Graph.Node<String> f = graph.addNode("f");
+            Graph.Node<String> g = graph.addNode("g");
+            Graph.Node<String> h = graph.addNode("h");
 
             graph.addEdge(a, b);
             graph.addEdge(a, f);
@@ -37,35 +37,35 @@ public class Driver {
             System.out.println("Grafo iniziale");
             System.out.println(graph.printAdj());
 
-            System.out.println("Rimozione " + f + "," + c);
+            System.out.println("Rimozione arco (" + f + ", " + c + ")");
             graph.removeEdge(f,c);
             System.out.println(graph.printAdj());
 
-            System.out.println("Rimozione " + c + "," + b);
+            System.out.println("Rimozione arco (" + c + ", " + b + ")");
             graph.removeEdge(c,b);
             System.out.println(graph.printAdj());
 
-            System.out.println("Rimozione " + d + "," + c);
+            System.out.println("Rimozione arco (" + d + ", " + c + ")");
             graph.removeEdge(d,c);
             System.out.println(graph.printAdj());
 
-            System.out.println("Aggiunta " + c + "," + f);
+            System.out.println("Inserimento arco (" + c + ", " + f + ")");
             graph.addEdge(c,f);
             System.out.println(graph.printAdj());
 
-            System.out.println("Rimozione " + d + "," + c);
+            System.out.println("Rimozione arco (" + d + ", " + c + ")");
             graph.removeEdge(d,c);
             System.out.println(graph.printAdj());
 
-            System.out.println("Rimozione nodo" + d);
+            System.out.println("Rimozione nodo (" + d + ")");
             graph.removeNode(d);
             System.out.println(graph.printAdj());
 
-            System.out.println("Rimozione nodo" + f);
+            System.out.println("Rimozione nodo (" + f + ")");
             graph.removeNode(f);
             System.out.println(graph.printAdj());
 
-            System.out.println("Rimozione nodo" + c);
+            System.out.println("Rimozione nodo (" + c + ")");
             graph.removeNode(c);
             System.out.println(graph.printAdj());
         }
@@ -80,15 +80,15 @@ public class Driver {
         else if(argv[0].equals("count_comp")) {
             Graph<String> graph = new Graph<String>();
 
-            Graph.GraphNode<String> a = graph.addNode("a");
-            Graph.GraphNode<String> b = graph.addNode("b");
-            Graph.GraphNode<String> c = graph.addNode("c");
-            Graph.GraphNode<String> d = graph.addNode("d");
-            Graph.GraphNode<String> e = graph.addNode("e");
-            Graph.GraphNode<String> f = graph.addNode("f");
-            Graph.GraphNode<String> g = graph.addNode("g");
-            Graph.GraphNode<String> h = graph.addNode("h");
-            Graph.GraphNode<String> i = graph.addNode("i");
+            Graph.Node<String> a = graph.addNode("a");
+            Graph.Node<String> b = graph.addNode("b");
+            Graph.Node<String> c = graph.addNode("c");
+            Graph.Node<String> d = graph.addNode("d");
+            Graph.Node<String> e = graph.addNode("e");
+            Graph.Node<String> f = graph.addNode("f");
+            Graph.Node<String> g = graph.addNode("g");
+            Graph.Node<String> h = graph.addNode("h");
+            Graph.Node<String> i = graph.addNode("i");
 
             graph.addEdge(a, b);
             graph.addEdge(a, f);
@@ -107,15 +107,15 @@ public class Driver {
         else if(argv[0].equals("get_comp")) {
             Graph<String> graph = new Graph<String>();
 
-            Graph.GraphNode<String> a = graph.addNode("a");
-            Graph.GraphNode<String> b = graph.addNode("b");
-            Graph.GraphNode<String> c = graph.addNode("c");
-            Graph.GraphNode<String> d = graph.addNode("d");
-            Graph.GraphNode<String> e = graph.addNode("e");
-            Graph.GraphNode<String> f = graph.addNode("f");
-            Graph.GraphNode<String> g = graph.addNode("g");
-            Graph.GraphNode<String> h = graph.addNode("h");
-            Graph.GraphNode<String> i = graph.addNode("i");
+            Graph.Node<String> a = graph.addNode("a");
+            Graph.Node<String> b = graph.addNode("b");
+            Graph.Node<String> c = graph.addNode("c");
+            Graph.Node<String> d = graph.addNode("d");
+            Graph.Node<String> e = graph.addNode("e");
+            Graph.Node<String> f = graph.addNode("f");
+            Graph.Node<String> g = graph.addNode("g");
+            Graph.Node<String> h = graph.addNode("h");
+            Graph.Node<String> i = graph.addNode("i");
 
             graph.addEdge(a, b);
             graph.addEdge(a, f);

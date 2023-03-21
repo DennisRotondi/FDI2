@@ -1,24 +1,23 @@
 public	class Node<V> {
-
-    public static enum Stato {
+    public static enum Status {
         UNEXPLORED, EXPLORING, EXPLORED;
     };
     
-    private V element;
-    public Stato stato;
-    
-    int map; // Usato da partition union e find
+    private V value;
+
+    public Status state; // tiene traccia dello stato di esplorazione
+    int map; // utile in partition union e find
     
     public Node(V e) {
-        element = e;
-        stato = Stato.UNEXPLORED;
+        value = e;
+        state = Status.UNEXPLORED;
     }
 
-    public V getElement() {
-        return element;
-    } 
+    public V getValue() {
+        return value;
+    }
 
     public String toString() {
-        return element.toString();
+        return value.toString();
     }
 }

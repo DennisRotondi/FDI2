@@ -143,7 +143,7 @@ public class Graph<V> {
     }
 
     /* Classe interna che descrive il generico nodo del grafo, con liste dei vicini uscenti ed entranti */
-    public static class Node<V> implements Cloneable{
+    public static class Node<V> implements Cloneable {
         public enum Status {UNEXPLORED, EXPLORED, EXPLORING}
 
         protected V value;

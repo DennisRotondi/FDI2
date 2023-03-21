@@ -9,7 +9,7 @@ public class Driver {
             print();
             return;
         }
-        
+
         if (argv[0].equals("graph")) {
             Graph<String> graph = new Graph<String>();
 
@@ -36,35 +36,35 @@ public class Driver {
             //System.out.println(graph.getNodes());
             System.out.println(graph);
 
-            System.out.println("Rimozione " + f + "," + c);
+            System.out.println("Rimozione arco (" + f + ", " + c + ")");
             graph.removeEdge(f,c);
             System.out.println(graph);
 
-            System.out.println("Rimozione " + c + "," + b);
+            System.out.println("Rimozione arco (" + c + ", " + b + ")");
             graph.removeEdge(c,b);
             System.out.println(graph);
 
-            System.out.println("Rimozione " + c + "," + d);
+            System.out.println("Rimozione arco (" + c + ", " + d + ")");
             graph.removeEdge(c,d);
             System.out.println(graph);
 
-            System.out.println("Aggiunta " + c + "," + f);
+            System.out.println("Inserimento arco (" + c + ", " + f + ")");
             graph.addEdge(c,f);
             System.out.println(graph);
 
-            System.out.println("Aggiunta " + d + "," + c);
+            System.out.println("Inserimento arco (" + d + ", " + c + ")");
             graph.addEdge(d,c);
             System.out.println(graph);
 
-            System.out.println("Rimozione nodo " + d);
+            System.out.println("Rimozione nodo (" + d + ")");
             graph.removeNode(d);
             System.out.println(graph);
 
-            System.out.println("Rimozione nodo " + f);
+            System.out.println("Rimozione nodo (" + f + ")");
             graph.removeNode(f);
             System.out.println(graph);
 
-            System.out.println("Rimozione nodo " + c);
+            System.out.println("Rimozione nodo (" + c + ")");
             graph.removeNode(c);
             System.out.println(graph);
         }
@@ -89,7 +89,7 @@ public class Driver {
             graph.addEdge(e, f);
             graph.addEdge(f, c);
             graph.addEdge(g, h);
-            
+
             System.out.println("Grafo:");
             System.out.println(graph);
             GraphServices.sweep(graph);
@@ -115,19 +115,19 @@ public class Driver {
             graph.addEdge(e, f);
             graph.addEdge(f, c);
             graph.addEdge(g, h);
-            
+
             System.out.println("Grafo:");
             System.out.println(graph);
-            
+
             System.out.println("Primo tentativo: (dovrebbe fallire)");
             GraphServices.topologicalSort(graph);
-            
+
             System.out.println("Rimozione arco (d,b)");
             graph.removeEdge(d, b);
-            
+
             System.out.println("Nuovo Grafo:");
             System.out.println(graph);
-            
+
             System.out.println("Secondo tentativo: (dovrebbe riuscire)");
             GraphServices.topologicalSort(graph);
         }
@@ -152,10 +152,10 @@ public class Driver {
             graph.addEdge(e, f);
             graph.addEdge(f, c);
             graph.addEdge(g, h);
-            
+
             System.out.println("Grafo 1:");
             System.out.println(graph);
-            
+
             GraphServices.strongConnectedComponents(graph);
             System.out.println("\n");
 
@@ -172,10 +172,10 @@ public class Driver {
             graph2.addEdge(c2, a2);
             graph2.addEdge(a2, d2);
             graph2.addEdge(d2, e2);
-            
+
             System.out.println("Grafo 2:");
             System.out.println(graph2);
-            
+
             GraphServices.strongConnectedComponents(graph2);
             System.out.println("\n");
 
@@ -209,7 +209,7 @@ public class Driver {
 
             System.out.println("Grafo 3:");
             System.out.println(graph3);
-            
+
             GraphServices.strongConnectedComponents(graph3);
             System.out.println("\n");
         }

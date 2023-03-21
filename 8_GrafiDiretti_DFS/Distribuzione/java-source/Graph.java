@@ -5,69 +5,69 @@ import java.util.List;
 
 public class Graph<V> {
 
-    private LinkedList<GraphNode<V>> nodes;
+    private LinkedList<Node<V>> nodes;
     private int n_nodes;
     private int n_edges;
 
     public Graph () {
-        this.nodes = new LinkedList<GraphNode<V>>();
+        this.nodes = new LinkedList<Node<V>>();
     }
 
     @SuppressWarnings("unchecked")
-    public List<GraphNode<V>> getNodes() {
-        List<GraphNode<V>> ret = new LinkedList<>();
+    public List<Node<V>> getNodes() {
+        List<Node<V>> ret = new LinkedList<>();
         
-        for(GraphNode<V> n : this.nodes) {
+        for(Node<V> n : this.nodes) {
             try {
-                ret.add((GraphNode<V>) n.clone());
+                ret.add((Node<V>) n.clone());
             } catch (CloneNotSupportedException e) {
                 e.printStackTrace();
             }
         }
         
-        return (List<GraphNode<V>>) ret;
+        return (List<Node<V>>) ret;
     }
 
     @SuppressWarnings("unchecked")
-    public List<GraphNode<V>> getOutNeighbors(GraphNode<V> n) {
-        List<GraphNode<V>> ret = new LinkedList<>();
+    public List<Node<V>> getOutNeighbors(Node<V> n) {
+        List<Node<V>> ret = new LinkedList<>();
         
-        for(GraphNode<V> edge : n.outEdges) {
+        for(Node<V> edge : n.outEdges) {
             try {
-                ret.add((GraphNode<V>) edge.clone());
+                ret.add((Node<V>) edge.clone());
             } catch (CloneNotSupportedException e) {
                 e.printStackTrace();
             }
         }
         
-        return (List<GraphNode<V>>) ret;
+        return (List<Node<V>>) ret;
     }
 
     @SuppressWarnings("unchecked")
-    public List<GraphNode<V>> getInNeighbors(GraphNode<V> n) {
-        List<GraphNode<V>> ret = new LinkedList<>();
+    public List<Node<V>> getInNeighbors(Node<V> n) {
+        List<Node<V>> ret = new LinkedList<>();
         
-        for(GraphNode<V> edge : n.inEdges) {
+        for(Node<V> edge : n.inEdges) {
             try {
-                ret.add((GraphNode<V>) edge.clone());
+                ret.add((Node<V>) edge.clone());
             } catch (CloneNotSupportedException e) {
                 e.printStackTrace();
             }
         }
         
-        return (List<GraphNode<V>>) ret;
+        return (List<Node<V>>) ret;
     }
 
-    public GraphNode<V> addNode(V value) {
-        GraphNode<V> n = new GraphNode<V>();
+    public Node<V> addNode(V value) {
+        Node<V> n = new Node<V>();
         n.value = value;
 
-        n.outEdges = new LinkedList<GraphNode<V>>();
-        n.inEdges = new LinkedList<GraphNode<V>>();
+        n.outEdges = new LinkedList<Node<V>>();
+        n.inEdges = new LinkedList<Node<V>>();
 
-        n.state = GraphNode.Status.UNEXPLORED;
+        n.state = Node.Status.UNEXPLORED;
         n.timestamp = 0;
-        for(GraphNode<V> node : this.nodes) {
+        for(Node<V> node : this.nodes) {
             if(node.value.equals(value))
                 return node;
         }
@@ -77,17 +77,17 @@ public class Graph<V> {
         return n;
     }
 
-    public void addEdge(GraphNode<V> s, GraphNode<V> t) {
+    public void addEdge(Node<V> s, Node<V> t) {
         s.outEdges.add(t);
         t.inEdges.add(s);
         this.n_edges++;
     }
 
-    public V getNodeValue(GraphNode<V> n) {
+    public V getNodeValue(Node<V> n) {
         return n.value;
     }
     
-    public void removeEdge(GraphNode<V> v1, GraphNode<V> v2) {
+    public void removeEdge(Node<V> v1, Node<V> v2) {
         if(getOutNeighbors(v1).contains(v2)) {
             v1.outEdges.remove(v2);
             v2.inEdges.remove(v1);
@@ -95,15 +95,15 @@ public class Graph<V> {
         }
     }
 
-    public void removeNode(GraphNode<V> v) {
+    public void removeNode(Node<V> v) {
         if(this.nodes.contains(v)) {
-            LinkedList<GraphNode<V>> out_aux = new LinkedList<GraphNode<V>>(v.outEdges);
-            LinkedList<GraphNode<V>> in_aux = new LinkedList<GraphNode<V>>(v.inEdges);
+            LinkedList<Node<V>> out_aux = new LinkedList<Node<V>>(v.outEdges);
+            LinkedList<Node<V>> in_aux = new LinkedList<Node<V>>(v.inEdges);
             
-            for(GraphNode<V> o : out_aux)
+            for(Node<V> o : out_aux)
                 this.removeEdge(v, o);
 
-            for(GraphNode<V> i : in_aux)
+            for(Node<V> i : in_aux)
                 this.removeEdge(i, v);
         }
         
@@ -112,69 +112,69 @@ public class Graph<V> {
     }
 
     public void resetStatus() {
-        List<Graph.GraphNode<V>> nodes = this.getNodes();
+        List<Graph.Node<V>> nodes = this.getNodes();
         
-        for(Graph.GraphNode<V> node : nodes) {
-            node.state = Graph.GraphNode.Status.UNEXPLORED;
+        for(Graph.Node<V> node : nodes) {
+            node.state = Graph.Node.Status.UNEXPLORED;
             node.timestamp = 0;
         }
     }
     
     @Override
     public String toString() {
-        HashMap<GraphNode<V>, Graph.GraphNode.Status> savedStatus = new HashMap<>();
-        for(GraphNode<V> node : this.nodes) {
+        HashMap<Node<V>, Graph.Node.Status> savedStatus = new HashMap<>();
+        for(Node<V> node : this.nodes) {
             savedStatus.put(node, node.state);
-            node.state = Graph.GraphNode.Status.UNEXPLORED;
+            node.state = Graph.Node.Status.UNEXPLORED;
         }
         
         StringBuffer toRet = new StringBuffer();
         toRet.append(this.n_nodes + " " + this.n_edges + "\n");
-        for(GraphNode<V> node : this.nodes) {
-            if(node.state == Graph.GraphNode.Status.UNEXPLORED)
+        for(Node<V> node : this.nodes) {
+            if(node.state == Graph.Node.Status.UNEXPLORED)
                 DFSprintEdges(node, toRet);
         }
         
-        for(GraphNode<V> node : this.nodes) {
+        for(Node<V> node : this.nodes) {
             node.state = savedStatus.get(node);
         }
         return toRet.toString();
     }
 
-    private void DFSprintEdges(GraphNode<V> node, StringBuffer str) {
-        if(node.state != GraphNode.Status.UNEXPLORED)
+    private void DFSprintEdges(Node<V> node, StringBuffer str) {
+        if(node.state != Node.Status.UNEXPLORED)
             return;
         
-        node.state = GraphNode.Status.EXPLORING;
-        for(GraphNode<V> e : node.outEdges)
+        node.state = Node.Status.EXPLORING;
+        for(Node<V> e : node.outEdges)
             str.append(node.value + " -> " + e.value + "\n");
         
-        for(GraphNode<V> e : node.outEdges) {
-            if(e.state == GraphNode.Status.UNEXPLORED)
+        for(Node<V> e : node.outEdges) {
+            if(e.state == Node.Status.UNEXPLORED)
                 DFSprintEdges(e, str);
         }
-        node.state = GraphNode.Status.EXPLORED;
+        node.state = Node.Status.EXPLORED;
     }
 
-    public static class GraphNode<V> implements Cloneable {
+    /* Classe interna che descrive il generico nodo del grafo */
+    public static class Node<V> implements Cloneable {
         public enum Status {UNEXPLORED, EXPLORED, EXPLORING}
 
         protected V value;
-        protected LinkedList<GraphNode<V>> outEdges;
-        protected LinkedList<GraphNode<V>> inEdges;
+        protected LinkedList<Node<V>> outEdges;
+        protected LinkedList<Node<V>> inEdges;
 
-        // keep track status
-        protected Status state;
-        protected int timestamp;
+        protected Status state; // tiene traccia dello stato di esplorazione
+        protected int timestamp; // utile per associare valori interi ai vertici
 
         @Override
         public String toString() {
-            return "GraphNode [value=" + value + ", state=" + state + "]";
+            return "Node [value=" + value + ", state=" + state + "]";
         }
 
         @Override
         protected Object clone() throws CloneNotSupportedException {
-            return (GraphNode<V>) this;
+            return (Node<V>) this;
         }
     }
 }

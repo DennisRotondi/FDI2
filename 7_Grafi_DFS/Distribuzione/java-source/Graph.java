@@ -8,31 +8,31 @@ public class Graph<V> {
       
     }
 
-    public List<GraphNode<V>> getNodes() {
+    public List<Node<V>> getNodes() {
         return null;
     }
 
-    public List<GraphNode<V>> getNeighbors(GraphNode<V> n) {
+    public List<Node<V>> getNeighbors(Node<V> n) {
         return null;
     }
 
-    public GraphNode addNode(V value) {
+    public Node addNode(V value) {
         return null;
     }
 
-    public void addEdge(GraphNode<V> s, GraphNode<V> t) {
+    public void addEdge(Node<V> s, Node<V> t) {
         return;
     }
 
-    public V getNodeValue(GraphNode<V> n) {
+    public V getNodeValue(Node<V> n) {
         return null;
     }
 
-    public void removeEdge(GraphNode<V> v1, GraphNode<V> v2) {
+    public void removeEdge(Node<V> v1, Node<V> v2) {
 
     }
 
-    public void removeNode(GraphNode<V> v) {
+    public void removeNode(Node<V> v) {
 
     }
 
@@ -57,18 +57,18 @@ public class Graph<V> {
         return null;
     }
 
-    public static class GraphNode<V> implements Cloneable {
+    /* Classe interna che descrive il generico nodo del grafo */
+    public static class Node<V> implements Cloneable {
         public enum Status {UNEXPLORED, EXPLORED, EXPLORING}
 
         protected V value;
-        protected LinkedList<GraphNode<V>> outEdges;
+        protected LinkedList<Node<V>> outEdges;
 
-        // keep track status
-        protected Status state;
+        protected Status state; // tiene traccia dello stato di esplorazione
 
         @Override
         public String toString() {
-            return "GraphNode [value=" + value + ", state=" + state + "]";
+            return "Node [value=" + value + ", state=" + state + "]";
         }
 
         @Override

@@ -1,13 +1,13 @@
 public	class Edge<V> {
 
     private Node<V> source;
-    private Node<V> target; 
-    private Integer weight; 
+    private Node<V> target;
+    private Integer weight;
     
     public Edge(Node<V> source, Node<V> target, Integer weight) {
         this.source = source;
-        this.target = target; 
-        this.weight = weight; 
+        this.target = target;
+        this.weight = weight;
     }
 
     // Restituisce il nodo da cui parte l'arco

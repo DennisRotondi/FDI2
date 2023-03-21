@@ -37,35 +37,35 @@ public class Driver {
             System.out.println("Grafo iniziale");
             System.out.println(graph.printAdj());
 
-            System.out.println("Rimozione " + f + "," + c);
+            System.out.println("Rimozione arco (" + f + ", " + c + ")");
             graph.removeEdge(f,c);
             System.out.println(graph.printAdj());
 
-            System.out.println("Rimozione " + c + "," + b);
+            System.out.println("Rimozione arco (" + c + ", " + b + ")");
             graph.removeEdge(c,b);
             System.out.println(graph.printAdj());
 
-            System.out.println("Rimozione " + d + "," + c);
+            System.out.println("Rimozione arco (" + d + ", " + c + ")");
             graph.removeEdge(d,c);
             System.out.println(graph.printAdj());
 
-            System.out.println("Aggiunta " + c + "," + f);
+            System.out.println("Inserimento arco (" + c + ", " + f + ")");
             graph.addEdge(c,f);
             System.out.println(graph.printAdj());
 
-            System.out.println("Rimozione " + d + "," + c);
+            System.out.println("Rimozione arco (" + d + ", " + c + ")");
             graph.removeEdge(d,c);
             System.out.println(graph.printAdj());
 
-            System.out.println("Rimozione nodo" + d);
+            System.out.println("Rimozione nodo (" + d + ")");
             graph.removeNode(d);
             System.out.println(graph.printAdj());
 
-            System.out.println("Rimozione nodo" + f);
+            System.out.println("Rimozione nodo (" + f + ")");
             graph.removeNode(f);
             System.out.println(graph.printAdj());
 
-            System.out.println("Rimozione nodo" + c);
+            System.out.println("Rimozione nodo (" + c + ")");
             graph.removeNode(c);
             System.out.println(graph.printAdj());
         }
