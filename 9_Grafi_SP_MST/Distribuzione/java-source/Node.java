@@ -7,6 +7,7 @@ public	class Node<V> {
 
     public Status state; // tiene traccia dello stato di esplorazione
     int map; // utile in partition union e find
+    int dist; // utile per memorizzare distanze in algoritmi per cammini minimi
     
     public Node(V e) {
         value = e;
