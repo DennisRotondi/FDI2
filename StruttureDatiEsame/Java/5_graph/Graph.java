@@ -158,8 +158,9 @@ public class Graph<V> {
     public String toString() {
         StringBuffer str = new StringBuffer();
         for(Node<V> node : this.nodes) {
+            str.append(node.value + ": ");
             for (Node<V> edge: getNeighbors(node))
-                str.append("(" + node.value + ", " + edge.value + ") ");
+                str.append(edge.value + " ");
             str.append("\n");
         }
         return str.toString();
