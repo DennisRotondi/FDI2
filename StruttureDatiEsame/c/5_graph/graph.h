@@ -17,10 +17,8 @@ void graph_remove_edge(graph* g, graph_node* v1, graph_node* v2);
 void graph_remove_node(graph* g, graph_node* v);
 void graph_delete(graph * h);
 graph* graph_read_ff(FILE* input);
-void graph_print(graph* g);
 void graph_print_adj(graph*);
-int graph_n_con_comp(graph *);
-linked_list* graph_get_con_comp(graph*);
+
 
 #endif	/* __GRAPH_H__ */
 

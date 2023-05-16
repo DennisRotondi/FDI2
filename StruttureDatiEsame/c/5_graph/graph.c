@@ -12,6 +12,7 @@ struct graph_node{
     // keep track status
     STATUS state;
     int timestamp;
+    int dist;
 };
 
 struct graph_prop {
@@ -23,10 +24,6 @@ struct graph{
     linked_list * nodes;
 	struct graph_prop* properties;
 };
-
-static void DFS(graph_node*);
-static void DFS_fill_cc(graph_node*, linked_list*);
-static void DFS_print_edges(graph_node*);
 
 graph * graph_new() {
 	graph * g = (graph *) malloc(sizeof(graph));
@@ -227,19 +224,6 @@ graph* graph_read_ff(FILE* input) {
 	return ret;
 }
 
-void graph_print(graph* g) {
-	printf("%d %d\n", g->properties->n_vertices, g->properties->n_edges);
-	linked_list_iterator* it = linked_list_iterator_new(g->nodes);
-	while (it) {
-		linked_list_iterator* itera = linked_list_iterator_next(it);
-		graph_node* current = (graph_node*)linked_list_iterator_getvalue(it);
-		if (current->state == UNEXPLORED) {
-			DFS_print_edges(current);
-		}
-		it = itera;
-	}
-}
-
 void graph_print_adj(graph* g) {
 	linked_list * nodes = graph_get_nodes(g);
 	linked_list_iterator * lli = linked_list_iterator_new(nodes);
@@ -266,85 +250,4 @@ void graph_print_adj(graph* g) {
 
 		lli = linked_list_iterator_next(lli);
 	}
-}
-
-static void DFS(graph_node* node) {
-	node->state = EXPLORING;
-	linked_list_iterator* it = linked_list_iterator_new(node->out_edges);
-	for (; it;) {
-		linked_list_iterator* itera = linked_list_iterator_next(it);
-		graph_node* nxt = (graph_node*)linked_list_iterator_getvalue(it);
-		if (nxt->state == UNEXPLORED)
-			DFS(nxt);
-		it = itera;
-	}
-	node->state = EXPLORED;
-}
-
-static void DFS_fill_cc(graph_node* node, linked_list* list) {
-	node->state = EXPLORING;
-	linked_list_add(list, node);
-	linked_list_iterator* it = linked_list_iterator_new(node->out_edges);
-	for (; it;) {
-		linked_list_iterator* itera = linked_list_iterator_next(it);
-		graph_node* nxt = (graph_node*)linked_list_iterator_getvalue(it);
-		if (nxt->state == UNEXPLORED)
-			DFS_fill_cc(nxt, list);
-		it = itera;
-	}
-	node->state = EXPLORED;
-}
-
-static void DFS_print_edges(graph_node* node) {
-	if (node->state != UNEXPLORED)
-		return;
-	node->state = EXPLORING;
-	linked_list_iterator* it = linked_list_iterator_new(node->out_edges);
-	while (it) {
-		linked_list_iterator* itera = linked_list_iterator_next(it);
-		graph_node* cur_edg = (graph_node*)linked_list_iterator_getvalue(it);
-		if (cur_edg->state == UNEXPLORED)
-			printf("%s %s\n", (char*)(node->value), (char*)(cur_edg->value));
-		it = itera;
-	}
-	it = linked_list_iterator_new(node->out_edges);
-	while (it) {
-		linked_list_iterator* itera = linked_list_iterator_next(it);
-		graph_node* cur_edg = (graph_node*)linked_list_iterator_getvalue(it);
-		if (cur_edg->state == UNEXPLORED)
-			DFS_print_edges(cur_edg);
-		it = itera;
-	}
-	node->state = EXPLORED;
-}
-
-int graph_n_con_comp(graph * g) {
-	int ret = 0;
-	linked_list_iterator* it = linked_list_iterator_new(g->nodes);
-	for (; it;) {
-		linked_list_iterator* itera = linked_list_iterator_next(it);
-		graph_node* current = (graph_node*)linked_list_iterator_getvalue(it);
-		if (current->state == UNEXPLORED) {
-			ret++;
-			DFS(current);
-		}
-		it = itera;
-	}
-	return ret;
-}
-
-linked_list* graph_get_con_comp(graph* g) {
-	linked_list* ret = linked_list_new();
-	linked_list_iterator* it = linked_list_iterator_new(g->nodes);
-	for (; it;) {
-		linked_list_iterator* itera = linked_list_iterator_next(it);
-		graph_node* current = (graph_node*)linked_list_iterator_getvalue(it);
-		if (current->state == UNEXPLORED) {
-			graph* to_add = graph_new();
-			linked_list_add(ret, to_add);
-			DFS_fill_cc(current, to_add->nodes);
-		}
-		it = itera;
-	}
-	return ret;
 }
