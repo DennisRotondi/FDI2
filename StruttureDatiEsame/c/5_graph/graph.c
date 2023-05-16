@@ -11,9 +11,9 @@ struct graph_node{
 
     // keep track status
     int dist; // Indica la distanza dal nodo di partenza in sssp
-	int map; // Indica il mapping nodo->int per la partition
-	STATUS state; // tiene traccia dello stato di esplorazione
-	int timestamp; // utile per associare valori interi ai vertici
+    int map; // Indica il mapping nodo->int per la partition
+    STATUS state; // tiene traccia dello stato di esplorazione
+    int timestamp; // utile per associare valori interi ai vertici
 };
 
 struct graph_prop {
