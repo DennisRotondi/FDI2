@@ -10,8 +10,8 @@ typedef struct graph_node {
 	linked_list *out_edges;
 	int dist; // Indica la distanza dal nodo di partenza in sssp
 	int map; // Indica il mapping nodo->int per la partition
-	STATUS status;
-	int timestamp;
+	STATUS status; // tiene traccia dello stato di esplorazione
+	int timestamp; // utile per associare valori interi ai vertici
 } graph_node;
 
 typedef struct graph_edge {

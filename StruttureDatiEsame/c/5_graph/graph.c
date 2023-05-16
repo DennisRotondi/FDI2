@@ -10,9 +10,10 @@ struct graph_node{
     linked_list * out_edges;
 
     // keep track status
-    STATUS state;
-    int timestamp;
-    int dist;
+    int dist; // Indica la distanza dal nodo di partenza in sssp
+	int map; // Indica il mapping nodo->int per la partition
+	STATUS state; // tiene traccia dello stato di esplorazione
+	int timestamp; // utile per associare valori interi ai vertici
 };
 
 struct graph_prop {
