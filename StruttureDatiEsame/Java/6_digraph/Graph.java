@@ -132,14 +132,14 @@ public class Graph<V> {
     
     /* Restituisce una stringa che rappresenta il grafo */
     @Override
-    public String toString(){
+    public String toString() {
         StringBuffer str = new StringBuffer();
-            for(Node<V> node : this.nodes) {
-                for (Node<V> edge: getOutNeighbors(node))
-                    str.append("(" + node.value + ", " + edge.value + ") ");
-                str.append("\n");
-            }
-            return str.toString();
+        for(Node<V> node : this.nodes) {
+            for (Node<V> edge: getOutNeighbors(node))
+                str.append("(" + node.value + ", " + edge.value + ") ");
+            str.append("\n");
+        }
+        return str.toString();
     }
 
     /* Classe interna che descrive il generico nodo del grafo, con liste dei vicini uscenti ed entranti */

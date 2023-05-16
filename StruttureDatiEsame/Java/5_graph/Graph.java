@@ -168,37 +168,17 @@ public class Graph<V> {
         
         return toRet.toString();
     }
-    
+
     /* Restituisce una stringa che rappresenta il grafo */
     @Override
     public String toString() {
-        StringBuffer toRet = new StringBuffer();
-        toRet.append(this.n_nodes + " " + this.n_edges + "\n");
-        
+        StringBuffer str = new StringBuffer();
         for(Node<V> node : this.nodes) {
-            if(node.state == Node.Status.UNEXPLORED)
-                DFSprintEdges(node, toRet);
+            for (Node<V> edge: getNeighbors(node))
+                str.append("(" + node.value + ", " + edge.value + ") ");
+            str.append("\n");
         }
-        
-        return toRet.toString();
-    }
-
-    /* Funzione ausiliaria per toString che sfrutta DFS */
-    private void DFSprintEdges(Node<V> node, StringBuffer str) {
-        if(node.state != Node.Status.UNEXPLORED)
-            return;
-        
-        node.state = Node.Status.EXPLORING;
-        for(Node<V> e : node.outEdges) {
-            if(e.state == Node.Status.UNEXPLORED)
-                str.append(node.value + " " + e.value + "\n");
-        }
-        
-        for(Node<V> e : node.outEdges) {
-            if(e.state == Node.Status.UNEXPLORED)
-                DFSprintEdges(e, str);
-        }
-        node.state = Node.Status.EXPLORED;
+        return str.toString();
     }
 
     /* Restituisce il numero di componenti connesse */
