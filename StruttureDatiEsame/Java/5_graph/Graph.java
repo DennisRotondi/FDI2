@@ -153,22 +153,6 @@ public class Graph<V> {
         return toRet;
     }
 
-    /* Restituisce una stringa che rappresenta per ogni nodo i suoi archi */
-    public String printAdj() {
-        StringBuffer toRet = new StringBuffer();
-        
-        for(Node<V> v : this.nodes) {
-            toRet.append(v.value + ": ");
-
-            for(Node<V> e: v.outEdges)
-                toRet.append(e.value + " ");
-            
-            toRet.append("\n");
-        }
-        
-        return toRet.toString();
-    }
-
     /* Restituisce una stringa che rappresenta il grafo */
     @Override
     public String toString() {
@@ -179,65 +163,6 @@ public class Graph<V> {
             str.append("\n");
         }
         return str.toString();
-    }
-
-    /* Restituisce il numero di componenti connesse */
-    public int nConComp() {
-        int ret = 0;
-        
-        for(Node<V> node : this.nodes) {
-            if(node.state == Node.Status.UNEXPLORED) {
-                ret++;
-                DFS(node);
-            }
-        }
-        
-        return ret;
-    }
-
-    /* Funzione ausiliaria per nConComp che sfrutta DFS */
-    private void DFS(Node<V> node) {
-        if(node.state != Node.Status.UNEXPLORED)
-            return;
-        
-        node.state = Node.Status.EXPLORING;
-        for(Node<V> e : node.outEdges) {
-            if(e.state == Node.Status.UNEXPLORED)
-                DFS(e);
-        }
-        
-        node.state = Node.Status.EXPLORED;
-    }
-
-    /* Restituisce una lista i cui elementi sono le varie componenti connesse */
-    public List<Graph<V>> getConComp() {
-        LinkedList<Graph<V>> toRet = new LinkedList<>();
-        
-        for(Node<V> node : this.nodes) {
-            if(node.state == Node.Status.UNEXPLORED) {
-                Graph<V> g = new Graph<>();
-                toRet.add(g);
-                DFSfillCC(node, g.nodes);
-            }
-        }
-        
-        return toRet;
-    }
-
-    /* Funzione ausiliaria per getConComp che sfrutta DFS per modificare la lista in input */
-    private void DFSfillCC(Node<V> node, LinkedList<Node<V>> list) {
-        if(node.state != Node.Status.UNEXPLORED)
-            return;
-        
-        node.state = Node.Status.EXPLORING;
-        list.add(node);
-        
-        for(Node<V> n : node.outEdges) {
-            if(n.state == Node.Status.UNEXPLORED)
-                DFSfillCC(n, list);
-        }
-        
-        node.state = Node.Status.EXPLORED;
     }
 
     /* Classe interna che descrive il generico nodo del grafo, con liste dei vicini uscenti ed entranti */
