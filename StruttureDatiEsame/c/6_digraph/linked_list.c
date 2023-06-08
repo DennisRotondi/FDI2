@@ -73,6 +73,12 @@ void * linked_list_get(linked_list * ll, int pos) {
     return current->value;
 }
 
+void *linked_list_node_getvalue(linked_list_node* node) {
+	if(node)
+		return node->value;
+	return NULL;
+}
+
 void linked_list_remove(linked_list * ll, int pos){
 	if (pos<0 || pos >(ll->size) - 1) {
 		printf("linked_list indexOutOfBound Exception in linked_list_remove for pos:%d\n", pos);

@@ -21,7 +21,8 @@ typedef struct linked_list_iterator linked_list_iterator;
 // linked list
 linked_list * linked_list_new();
 void linked_list_add(linked_list * ll, void * value);    
-void * linked_list_get(linked_list * ll, int i);
+void* linked_list_get(linked_list * ll, int i);
+void* linked_list_node_getvalue(linked_list_node* node);
 void linked_list_remove_last(linked_list *ll);
 void linked_list_delete(linked_list *ll);
 int linked_list_size(linked_list *ll);

@@ -102,6 +102,12 @@ void linked_list_delete(linked_list *l) {
     return;
 }
 
+void *linked_list_node_getvalue(linked_list_node* node) {
+	if(node)
+		return node->value;
+	return NULL;
+}
+
 linked_list_iterator * linked_list_iterator_new(linked_list *ll) {
     linked_list *ptr = (linked_list *) ll;
     return (linked_list_iterator *) ptr->head;

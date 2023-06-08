@@ -21,13 +21,19 @@ void linked_list_add(linked_list * ll, int pos, void * value);
 /**
 Searches the node in position i of the list ll, and returns a pointer to its value, or NULL if i is out of bound.
 */
-void *linked_list_get(linked_list * ll, int i);
+void* linked_list_get(linked_list * ll, int i);
 
 /**
 Removes from the list ll the node in position pos. Notice that the function does not free up the memory pointed by the
 value of the node in position pos.
 */
 void linked_list_remove(linked_list* ll, int pos);
+
+/**
+Returns a pointer to the value of the linked_list_node given in input.
+*/
+void* linked_list_node_getvalue(linked_list_node* node);
+
 
 /**
 Adds to tail of the list ll a new node with value pointing at value.
