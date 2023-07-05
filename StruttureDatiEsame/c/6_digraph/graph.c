@@ -87,7 +87,7 @@ void graph_remove_edge(graph * g, graph_node * v1, graph_node * v2) {
 								linked_list_iterator_delete(it3);
                                 break;
 							}
-                            else{
+                            else {
 							    nd = (graph_node*)linked_list_iterator_next(it3);
                             }
 						}
