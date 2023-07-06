@@ -4,14 +4,19 @@ public class BST<V> {
 
     /* Classe interna che descrive il generico nodo del BST */
     public static class Node<V> {
-        private int key;
-        private V value;
-        private Node<V> left;
-        private Node<V> right;
+        protected int key;
+        protected V value;
+        protected Node<V> left;
+        protected Node<V> right;
 
         public Node(int key, V value) {
             this.key = key;
             this.value = value;
+        }
+        
+        @Override
+        public String toString() {
+            return "[chiave: " + key + ", valore: " + value + "]";
         }
     }
 
