@@ -3,7 +3,7 @@ public class BST<V> {
     private Node<V> root;
 
     /* Classe interna che descrive il generico nodo del BST */
-    private class Node<V> {
+    public static class Node<V> {
         private int key;
         private V value;
         private Node<V> left;
@@ -18,6 +18,11 @@ public class BST<V> {
     /* Costruttore */
     public BST(int key, V value) {
         this.root = new Node<V>(key, value);
+    }
+
+    /* Restituisce la radice del BST */
+    public Node<V> getRoot() {
+        return this.root;
     }
 
     /* Metodo ausiliario per insert */
